@@ -35,7 +35,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header mejorado - logo fijo a la izquierda */
+/* Header con menú hamburguesa */
 header {
   background: var(--dark);
   color: #fff;
@@ -49,47 +49,55 @@ header {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo siempre a la izquierda */
+/* Logo */
 .logo {
-  flex: 0 0 auto; /* No crece, no se encoge, tamaño automático */
-  margin-right: 1rem;
+  flex: 0 0 auto;
+  z-index: 1002;
 }
 
 .logo img {
-  height: 48px;
-  transition: transform 0.3s ease;
-  max-width: 100%;
+  height: 50px;
+  width: auto;
   display: block;
 }
 
-.logo img:hover {
-  transform: scale(1.05);
-}
-
-/* Empresa centrada */
+/* Empresa CENTRADA */
 .empresa {
-  flex: 1;
-  text-align: center;
-  font-size: 1.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
   font-weight: 700;
-  letter-spacing: -0.025em;
-  background: linear-gradient(135deg, #fff 0%, #e2e8f0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0;
+  color: white;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
 }
 
-/* Nav a la derecha */
-nav {
+/* Botón hamburguesa - Oculto en desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1002;
+  color: white;
+  font-size: 1.8rem;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
   flex: 0 0 auto;
-  margin-left: 1rem;
 }
 
-nav ul {
+/* Navegación DESKTOP */
+.nav-menu {
+  flex: 0 0 auto;
+}
+
+.nav-menu ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
@@ -97,149 +105,19 @@ nav ul {
   padding: 0;
 }
 
-nav a {
+.nav-menu a {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
-  transition: var(--transition);
-  position: relative;
-  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-size: 1rem;
   white-space: nowrap;
 }
 
-nav a:hover {
+.nav-menu a:hover {
   background: rgba(255, 255, 255, 0.1);
-}
-
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--brand);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-
-nav a:hover::after {
-  width: 80%;
-}
-
-
-
-/* Para tablets pequeñas (600px - 767px) */
-@media (max-width: 767px) {
-  header {
-    padding: 0.75rem 1rem;
-    flex-wrap: nowrap; /* No permitir wrap */
-  }
-  
-  .empresa {
-    font-size: 1.2rem;
-    max-width: 180px; /* Limitar ancho */
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  nav ul {
-    gap: 0.5rem;
-  }
-  
-  nav a {
-    padding: 0.35rem 0.4rem;
-    font-size: 0.85rem;
-  }
-  
-  .logo img {
-    height: 38px;
-  }
-  
-  .logo {
-    margin-right: 0.5rem;
-  }
-  
-  nav {
-    margin-left: 0.5rem;
-  }
-}
-
-/* Para móviles (menos de 600px) - Aquí sí cambiamos estructura */
-@media (max-width: 600px) {
-  header {
-    flex-wrap: wrap; /* Ahora sí permitir wrap */
-    padding: 0.5rem 0.75rem;
-  }
-  
-  .logo {
-    flex: 0 0 60px; /* Ancho fijo para logo */
-    margin-right: 0;
-    order: 1;
-  }
-  
-  .empresa {
-    flex: 1;
-    order: 2;
-    font-size: 1.2rem;
-    text-align: center;
-    max-width: none;
-    margin: 0 0.5rem;
-  }
-  
-  nav {
-    flex: 0 0 100%; /* Ocupa toda la fila */
-    order: 3;
-    margin: 0.5rem 0 0;
-    margin-left: 0;
-  }
-  
-  nav ul {
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  
-  nav a {
-    padding: 0.3rem 0.4rem;
-    font-size: 0.85rem;
-  }
-  
-  .logo img {
-    height: 36px;
-  }
-}
-
-/* Para móviles muy pequeños */
-@media (max-width: 400px) {
-  .empresa {
-    font-size: 1.1rem;
-  }
-  
-  nav ul {
-    gap: 0.25rem;
-  }
-  
-  nav a {
-    padding: 0.25rem 0.3rem;
-    font-size: 0.8rem;
-  }
-  
-  .logo img {
-    height: 32px;
-  }
-}
-
-/* Ajustes específicos para tablets entre 600px y 800px */
-@media (max-width: 800px) and (min-width: 601px) {
-  .empresa {
-    max-width: 200px;
-  }
-  
-  nav ul {
-    gap: 0.75rem;
-  }
 }
 /* Main */
 main {
@@ -248,208 +126,6 @@ main {
   padding: 0 1rem;
 }
 
-/* Hero expandido - fondo más claro */
-.hero {
-  padding: 4rem 2rem;
-  text-align: center;
- background: linear-gradient(135deg, 
-  rgba(0, 0, 0, 0.15) 0%,  /* 15% opacidad */
-  rgba(0, 0, 0, 0.25) 100%), 
-url('./img/plana3.png') center/cover no-repeat;
-  color: white;
-  margin-bottom: 3rem;
-  position: relative;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-/* Contenedor para centrar contenido */
-.hero-container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-  padding: 2rem;
-}
-
-/* Texto con buen contraste */
-.hero h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 1rem;
-  color: white;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8);
-}
-
-.hero h1 {
-  margin: 0.5rem 0 2rem;
-  font-size: 3.5rem;
-  font-weight: 900;
-  line-height: 1.1;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
-  letter-spacing: 1px;
-}
-
-/* Destacar "IMPRESIÓN DIGITAL" */
-.hero h1 .highlight {
-  color: #fff;
-  display: block;
-  font-size: 4rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8),
-               0 0 20px rgba(0, 102, 204, 0.4);
-}
-
-.hero p {
-  font-size: 1.4rem;
-  max-width: 800px;
-  margin: 0 auto 3rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-  font-weight: 400;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-/* Botones sin glass, más sólidos */
-.hero-btn {
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  min-width: 220px;
-  justify-content: center;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, 
-    var(--brand) 0%,
-    #0056b3 100%);
-  color: white;
-  border: none;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-.btn-primary:hover {
-  background: linear-gradient(135deg, 
-    #0056b3 0%,
-    #004a99 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--dark);
-  border: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.btn-secondary:hover {
-  background: white;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Para móviles */
-@media (max-width: 768px) {
-  .hero {
-    padding: 2rem 1rem;
-    min-height: 70vh;
-  }
-  
-  .hero-container {
-    padding: 1.5rem;
-  }
-  
-  .hero h2 {
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-  
-  .hero h1 .highlight {
-    font-size: 2.8rem;
-  }
-  
-  .hero p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .hero-btn {
-    width: 100%;
-    max-width: 300px;
-    padding: 0.9rem 2rem;
-    font-size: 1rem;
-  }
-}
-
-/* Para tablets */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hero {
-    min-height: 70vh;
-  }
-  
-  .hero h1 {
-    font-size: 3rem;
-  }
-  
-  .hero h1 .highlight {
-    font-size: 3.2rem;
-  }
-  
-  .hero p {
-    font-size: 1.3rem;
-  }
-}
-
-/* Para pantallas muy grandes */
-@media (min-width: 1600px) {
-  .hero {
-    min-height: 85vh;
-  }
-  
-  .hero h1 {
-    font-size: 4rem;
-  }
-  
-  .hero h1 .highlight {
-    font-size: 4.5rem;
-  }
-  
-  .hero p {
-    font-size: 1.6rem;
-    max-width: 900px;
-  }
-}
 
 /* Indicador de scroll */
 .scroll-indicator {
@@ -1317,4 +993,353 @@ footer {
   100% {
     left: 100%;
   }
+} 
+
+
+/* ====================================== */
+/* RESPONSIVE - CORREGIDO Y OPTIMIZADO */
+/* ====================================== */
+
+/* 1. TABLETS Y MÓVILES (≤1024px) - MENÚ HAMBURGUESA */
+@media (max-width: 1024px) {
+  header {
+    padding: 0.75rem 1rem;
+    position: relative;
+  }
+  
+  /* Ocultar nav desktop */
+  .nav-menu {
+    display: none !important;
+  }
+  
+  /* Mostrar hamburguesa */
+  .menu-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.8rem;
+    margin-left: auto; /* Empujar a la derecha */
+  }
+  
+  /* Empresa centrada */
+  .empresa {
+    font-size: 1.2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: calc(100% - 140px); /* 70px logo + 70px hamburguesa */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .logo {
+    flex: 0 0 70px;
+  }
+  
+  .logo img {
+    height: 45px;
+    width: auto;
+    margin-top: 0 !important; /* QUITAR el margin-top que causa problemas */
+  }
+}
+
+/* 2. TABLETS ESPECÍFICAS */
+/* iPad Air (820x1180) */
+@media (width: 820px) and (height: 1180px),
+       (width: 768px) and (height: 1024px) {
+  header {
+    min-height: 80px;
+    align-items: center !important; /* Centrar verticalmente */
+  }
+  
+  .logo {
+    align-self: center !important;
+  }
+  
+  .logo img {
+    height: 50px;
+  }
+  
+  .empresa {
+    font-size: 1.3rem;
+  }
+}
+
+/* iPad Pro 11" (834x1194) y similares */
+@media (min-width: 834px) and (max-width: 1194px) {
+  .empresa {
+    font-size: 1.4rem;
+  }
+  
+  .menu-toggle {
+    font-size: 2rem;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* 3. MÓVILES (≤767px) */
+@media (max-width: 767px) {
+  header {
+    padding: 0.5rem 1rem;
+    min-height: 70px;
+  }
+  
+  .logo {
+    flex: 0 0 60px;
+  }
+  
+  .logo img {
+    height: 40px;
+    margin-top: 0 !important; /* IMPORTANTE: quitar margin-top */
+  }
+  
+  .empresa {
+    font-size: 1.1rem;
+    max-width: calc(100% - 120px); /* 60px logo + 60px hamburguesa */
+  }
+  
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.6rem;
+  }
+  
+  /* Menú móvil */
+  .mobile-nav {
+    width: 250px;
+    padding: 5rem 1.5rem 1.5rem;
+  }
+}
+
+/* 4. MÓVILES PEQUEÑOS (≤480px) */
+@media (max-width: 480px) {
+  header {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .logo {
+    flex: 0 0 55px;
+  }
+  
+  .logo img {
+    height: 35px;
+  }
+  
+  .empresa {
+    font-size: 1rem;
+    max-width: calc(100% - 110px);
+  }
+  
+  .menu-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+  }
+  
+  .mobile-nav {
+    width: 220px;
+  }
+}
+
+/* 5. PANTALLAS ALTAS (1080x2424, etc.) */
+@media (max-width: 767px) and (min-height: 2000px) {
+  header {
+    padding: 0.75rem 1.25rem;
+    min-height: 80px;
+  }
+  
+  .logo img {
+    height: 50px;
+  }
+  
+  .empresa {
+    font-size: 1.4rem;
+    max-width: calc(100% - 160px);
+  }
+  
+  .menu-toggle {
+    font-size: 2rem;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* 6. TABLETS LANDSCAPE (poca altura) */
+@media (max-height: 600px) and (min-width: 600px) {
+  header {
+    min-height: 60px;
+    padding: 0.5rem 1rem;
+  }
+  
+  .logo img {
+    height: 35px;
+  }
+  
+  .empresa {
+    font-size: 1.1rem;
+  }
+  
+  .mobile-nav {
+    padding-top: 4rem;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}
+
+/* 7. DESKTOP (>1024px) - NAV NORMAL */
+@media (min-width: 1025px) {
+  .mobile-nav,
+  .menu-overlay {
+    display: none !important;
+  }
+  
+  .nav-menu {
+    display: block !important;
+  }
+  
+  .menu-toggle {
+    display: none !important;
+  }
+  
+  .empresa {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* 8. MENÚ MÓVIL (estilos base) */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: var(--dark);
+  padding: 6rem 2rem 2rem;
+  transition: right 0.3s ease;
+  z-index: 1001;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-nav.active {
+  display: block;
+  right: 0;
+}
+
+.mobile-nav ul {
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mobile-nav li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 1rem 0;
+  font-size: 1.1rem;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.mobile-nav a:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* 9. OVERLAY */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.menu-overlay.active {
+  display: block;
+}
+
+/* 10. AJUSTES HERO PARA RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 70vh;
+    padding: 3rem 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero h1 .highlight {
+    font-size: 2.8rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 60vh;
+    padding: 2rem 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero h1 .highlight {
+    font-size: 2.2rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+  }
+  
+  .hero-btn {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    min-width: 200px;
+  }
+}
+
+/* 11. CORRECCIÓN ESPECÍFICA para logo con margin-top */
+.logo img {
+  margin-top: 0 !important; /* FORZAR a quitar cualquier margin-top */
+  vertical-align: middle;
+}
+
+/* 12. FIX para position absolute en header */
+header {
+  position: relative;
+}
+
+.empresa {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.logo, .menu-toggle {
+  position: relative;
+  z-index: 2;
 }
