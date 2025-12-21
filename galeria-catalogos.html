@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - Catálogos y Folletos | JLM Impresión Digital</title>
+    <style>
+        /* ESTILOS GENERALES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+        }
+
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .galeria-hero {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+        }
+
+        .galeria-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .galeria-hero p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        /* GRID DE GALERÍA */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .galeria-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .galeria-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .galeria-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .galeria-caption {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #2c3e50;
+            background: white;
+        }
+
+        /* SECCIÓN DE INFORMACIÓN */
+        .galeria-info {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .galeria-info h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .info-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .info-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-text h3, .info-contact h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .info-text ul {
+            list-style-position: inside;
+            padding-left: 15px;
+        }
+
+        .info-text li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+
+        .info-contact p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-primary {
+            background: #3498db;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* ============================================
+           ESTILOS PARA EL MODAL/LIGHTBOX (LO NUEVO)
+           ============================================ */
+        
+        /* Modal (fondo) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+            overflow: hidden;
+        }
+
+        /* Contenido del Modal */
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 100%;
+            max-width: 1200px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Imagen dentro del Modal */
+        .modal-image {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+            margin: auto;
+            display: block;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Botón para cerrar (X) */
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #fff;
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s;
+            background: rgba(0, 0, 0, 0.5);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: #ddd;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Botones de navegación (anterior/siguiente) */
+        .modal-nav {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 65px;
+            height: 65px;
+            color: white;
+            font-weight: bold;
+            font-size: 32px;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .modal-nav:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev {
+            left: 35px;
+        }
+
+        .next {
+            right: 35px;
+        }
+
+        /* Información de la imagen (título y contador) */
+        .modal-info {
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        }
+
+        #imageCounter {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+            display: block;
+            color: #ddd;
+        }
+
+        #imageCaption {
+            font-size: 22px;
+            margin: 0;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* Animación de entrada */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Efectos para el cuerpo cuando el modal está abierto */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .modal-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            
+            .prev {
+                left: 15px;
+            }
+            
+            .next {
+                right: 15px;
+            }
+            
+            .close-modal {
+                top: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 35px;
+            }
+            
+            .modal-image {
+                max-width: 95%;
+                max-height: 70vh;
+            }
+            
+            #imageCaption {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-nav {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            
+            .modal-image {
+                max-height: 65vh;
+            }
+            
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .galeria-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html#servicios" class="back-btn">← Volver a Servicios</a>
+    </header>
+
+    <main class="galeria-page">
+        <section class="galeria-hero">
+            <h1>Catálogos y Folletos</h1>
+            <p>Ejemplos de nuestro trabajo en diseño e impresión</p>
+        </section>
+
+        <section class="galeria-container">
+            <div class="galeria-grid">
+                <!-- Imagen 1 -->
+                <div class="galeria-item" data-index="0">
+                    <img src="./img/catalogolibrosfolletos_0.jpg" alt="Catálogo corporativo" loading="lazy">
+                    <div class="galeria-caption">Catálogo corporativo</div>
+                </div>
+                
+                <!-- Imagen 2 -->
+                <div class="galeria-item" data-index="1">
+                    <img src="./img/catalogolibrosfolletos_1.jpg" alt="Folleto promocional" loading="lazy">
+                    <div class="galeria-caption">Folleto promocional</div>
+                </div>
+                
+                <!-- Imagen 3 -->
+                <div class="galeria-item" data-index="2">
+                    <img src="./img/catalogolibrosfolletos_2.jpg" alt="Díptico informativo" loading="lazy">
+                    <div class="galeria-caption">Díptico informativo</div>
+                </div>
+                
+                <!-- Imagen 4 -->
+                <div class="galeria-item" data-index="3">
+                    <img src="./img/catalogolibrosfolletos_3.jpg" alt="Tríptico publicitario" loading="lazy">
+                    <div class="galeria-caption">Tríptico publicitario</div>
+                </div>
+                
+                <!-- Imagen 5 -->
+                <div class="galeria-item" data-index="4">
+                    <img src="./img/catalogolibrosfolletos_4.jpg" alt="Libro institucional" loading="lazy">
+                    <div class="galeria-caption">Libro institucional</div>
+                </div>
+                
+                <!-- Imagen 6 -->
+                <div class="galeria-item" data-index="5">
+                    <img src="./img/catalogolibrosfolletos_5.jpg" alt="Memoria anual" loading="lazy">
+                    <div class="galeria-caption">Memoria anual</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="galeria-info">
+            <h2>Detalles del servicio</h2>
+            <div class="info-content">
+                <div class="info-text">
+                    <h3>¿Qué ofrecemos?</h3>
+                    <ul>
+                        <li>Diseño personalizado de catálogos</li>
+                        <li>Folletos publicitarios de varios formatos</li>
+                        <li>Libros corporativos y memorias anuales</li>
+                        <li>Impresión en diferentes tipos de papel</li>
+                        <li>Acabados especiales: barniz UV, troquelados</li>
+                    </ul>
+                </div>
+                
+                <div class="info-contact">
+                    <h3>¿Necesitas algo similar?</h3>
+                    <p>Contacta con nosotros para un presupuesto personalizado.</p>
+                    <a href="index.html#contacto" class="btn btn-primary">Solicitar presupuesto</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 JLM Impresión Digital — Zaragoza</p>
+        <p>Contacto: produccion@jlmimpresion.com | Tel: 000-000-000</p>
+    </footer>
+
+    <!-- MODAL PARA EXPANDIR IMÁGENES -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img class="modal-image" id="expandedImage" src="" alt="">
+            <div class="modal-info">
+                <span id="imageCounter"></span>
+                <p id="imageCaption"></p>
+            </div>
+        </div>
+        <a class="modal-nav prev">&#10094;</a>
+        <a class="modal-nav next">&#10095;</a>
+    </div>
+
+    <script>
+        // SCRIPT PARA EL MODAL - TODO EN UNO
+        
+        // Datos de las imágenes
+        const imagenesGaleria = [
+            {
+                src: './img/catalogolibrosfolletos_0.jpg',
+                alt: 'Catálogo corporativo',
+                caption: 'Catálogo corporativo'
+            },
+            {
+                src: './img/catalogolibrosfolletos_1.jpg',
+                alt: 'Folleto promocional',
+                caption: 'Folleto promocional'
+            },
+            {
+                src: './img/catalogolibrosfolletos_2.jpg',
+                alt: 'Díptico informativo',
+                caption: 'Díptico informativo'
+            },
+            {
+                src: './img/catalogolibrosfolletos_3.jpg',
+                alt: 'Tríptico publicitario',
+                caption: 'Tríptico publicitario'
+            },
+            {
+                src: './img/catalogolibrosfolletos_4.jpg',
+                alt: 'Libro institucional',
+                caption: 'Libro institucional'
+            },
+            {
+                src: './img/catalogolibrosfolletos_5.jpg',
+                alt: 'Memoria anual',
+                caption: 'Memoria anual'
+            }
+        ];
+
+        // Esperar a que todo el DOM esté cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado - inicializando galería');
+            
+            // Elementos del DOM
+            const modal = document.getElementById('imageModal');
+            const expandedImage = document.getElementById('expandedImage');
+            const imageCounter = document.getElementById('imageCounter');
+            const imageCaption = document.getElementById('imageCaption');
+            const closeBtn = document.querySelector('.close-modal');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            const galleryItems = document.querySelectorAll('.galeria-item');
+            
+            // Variable para llevar el control de la imagen actual
+            let currentIndex = 0;
+            
+            // FUNCIÓN: Abrir modal con una imagen específica
+            function openModal(index) {
+                console.log('Abriendo modal con índice:', index);
+                
+                // Verificar que el índice sea válido
+                if (index < 0 || index >= imagenesGaleria.length) {
+                    console.error('Índice fuera de rango');
+                    return;
+                }
+                
+                // Actualizar índice actual
+                currentIndex = index;
+                
+                // Obtener la imagen actual
+                const imagenActual = imagenesGaleria[currentIndex];
+                
+                // Actualizar el modal con la imagen
+                expandedImage.src = imagenActual.src;
+                expandedImage.alt = imagenActual.alt;
+                imageCaption.textContent = imagenActual.caption;
+                imageCounter.textContent = `${currentIndex + 1} / ${imagenesGaleria.length}`;
+                
+                // Mostrar el modal
+                modal.style.display = 'block';
+                
+                // Prevenir scroll del body
+                document.body.style.overflow = 'hidden';
+                document.body.classList.add('modal-open');
+                
+                console.log('Modal mostrado con imagen:', imagenActual.src);
+            }
+            
+            // FUNCIÓN: Cerrar modal
+            function closeModal() {
+                console.log('Cerrando modal');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                document.body.classList.remove('modal-open');
+            }
+            
+            // FUNCIÓN: Mostrar siguiente imagen
+            function nextImage() {
+                // Calcular nuevo índice (circular)
+                currentIndex = (currentIndex + 1) % imagenesGaleria.length;
+                openModal(currentIndex);
+            }
+            
+            // FUNCIÓN: Mostrar imagen anterior
+            function prevImage() {
+                // Calcular nuevo índice (circular hacia atrás)
+                currentIndex = (currentIndex - 1 + imagenesGaleria.length) % imagenesGaleria.length;
+                openModal(currentIndex);
+            }
+            
+            // ASIGNAR EVENTOS A CADA ÍTEM DE LA GALERÍA
+            galleryItems.forEach((item, index) => {
+                console.log('Asignando evento al item:', index);
+                
+                item.addEventListener('click', function(e) {
+                    console.log('Clic en item:', index);
+                    
+                    // Prevenir comportamiento por defecto
+                    e.preventDefault();
+                    
+                    // Abrir modal con esta imagen
+                    openModal(index);
+                });
+            });
+            
+            // ASIGNAR EVENTOS A LOS BOTONES DEL MODAL
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', prevImage);
+            nextBtn.addEventListener('click', nextImage);
+            
+            // CERRAR MODAL AL HACER CLIC FUERA DE LA IMAGEN
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // NAVEGACIÓN CON TECLADO
+            document.addEventListener('keydown', function(e) {
+                // Solo si el modal está abierto
+                if (modal.style.display === 'block') {
+                    switch(e.key) {
+                        case 'Escape':
+                            closeModal();
+                            break;
+                        case 'ArrowRight':
+                            nextImage();
+                            break;
+                        case 'ArrowLeft':
+                            prevImage();
+                            break;
+                    }
+                }
+            });
+            
+            // PRECARGAR IMÁGENES PARA MEJOR EXPERIENCIA
+            window.addEventListener('load', function() {
+                console.log('Precargando imágenes...');
+                imagenesGaleria.forEach(imagen => {
+                    const img = new Image();
+                    img.src = imagen.src;
+                });
+            });
+            
+            // PREVENIR COMPORTAMIENTO POR DEFECTO EN BOTONES DE NAVEGACIÓN
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+            
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+            
+            console.log('Galería inicializada correctamente');
+        });
+        
+        // Mensaje de error si algo sale mal
+        window.addEventListener('error', function(e) {
+            console.error('Error en la página:', e.message);
+            console.error('En el archivo:', e.filename);
+            console.error('En la línea:', e.lineno);
+        });
+    </script>
+</body>
+</html>
