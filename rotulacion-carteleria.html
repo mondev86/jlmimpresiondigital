@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería - Catálogos y Folletos | JLM Impresión Digital</title>
+    <title>Galería - Rotulación y Cartelería | JLM Impresión Digital</title>
     <style>
         /* ============================================
            ESTILOS GENERALES PARA LA PÁGINA
@@ -355,47 +355,52 @@
     <main class="galeria-page">
         <!-- Cabecera con título y descripción -->
         <section class="galeria-hero">
-            <h1>Catálogos y Folletos</h1>
-            <p>Ejemplos de nuestro trabajo en diseño e impresión</p>
+            <h1>Rotulación y Cartelería</h1>
+            <p>Ofrecemos varios tipos de montajes en diferentes modalidades y materiales</p>
         </section>
 
         <!-- Contenedor de la galería de imágenes -->
         <section class="galeria-container">
             <div class="galeria-grid">
-                <!-- Nota: La imagen 1 (índice 0) está comentada en tu HTML original -->
-                <!-- Imagen 1 - Índice 0 (COMENTADA)
+                <!-- Imagen 1 - Índice 0 -->
                 <div class="galeria-item" data-index="0">
-                    <img src=".img/catalogolibrosfolletos_0.jpg" alt="Catálogo corporativo" loading="lazy">
-                    <div class="galeria-caption"></div>
-                </div-->
-                
-                <!-- Imagen 2 - Índice 1 (pero será índice 0 en nuestro array) -->
-                <div class="galeria-item" data-index="0">
-                    <img src="./img/catalogolibrosfolletos_1.jpg" alt="Folleto promocional" loading="lazy">
+                    <img src="./img/rotulacioncart-01.jpg" alt="Ejemplo de rotulación y cartelería" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
-                <!-- Imagen 3 - Índice 2 (pero será índice 1 en nuestro array) -->
+                <!-- Imagen 2 - Índice 1 -->
                 <div class="galeria-item" data-index="1">
-                    <img src="./img/catalogolibrosfolletos_2.jpg" alt="Díptico informativo" loading="lazy">
+                    <img src="./img/rotulacioncart-02.jpg" alt="Rotulación para establecimiento comercial" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
-                <!-- Imagen 4 - Índice 3 (pero será índice 2 en nuestro array) -->
+                <!-- Imagen 3 - Índice 2 -->
                 <div class="galeria-item" data-index="2">
-                    <img src="./img/catalogolibrosfolletos_3.jpg" alt="Tríptico publicitario" loading="lazy">
+                    <img src="./img/rotulacioncart-03.jpg" alt="Cartelería informativa" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
-                <!-- Imagen 5 - Índice 4 (pero será índice 3 en nuestro array) -->
+                <!-- Imagen 4 - Índice 3 -->
                 <div class="galeria-item" data-index="3">
-                    <img src="./img/catalogolibrosfolletos_4.jpg" alt="Libro institucional" loading="lazy">
+                    <img src="./img/rotulacioncart-04.jpg" alt="Señalética direccional" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
-                <!-- Imagen 6 - Índice 5 (pero será índice 4 en nuestro array) -->
+                <!-- Imagen 5 - Índice 4 -->
                 <div class="galeria-item" data-index="4">
-                    <img src="./img/catalogolibrosfolletos_5.jpg" alt="Memoria anual" loading="lazy">
+                    <img src="./img/rotulacioncart-05.jpg" alt="Cartel promocional" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+                
+                <!-- Imagen 6 - Índice 5 -->
+                <div class="galeria-item" data-index="5">
+                    <img src="./img/rotulacioncart-07.jpg" alt="Rotulación corporativa" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+                
+                <!-- Imagen 7 - Índice 6 -->
+                <div class="galeria-item" data-index="6">
+                    <img src="./img/rotulacioncart-08.jpg" alt="Cartelería de eventos" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
             </div>
@@ -408,9 +413,9 @@
                 <div class="info-text">
                     <h3>¿Qué ofrecemos?</h3>
                     <ul>
-                        <li>Diseño personalizado de catálogos</li>
-                        <li>Folletos publicitarios de varios formatos</li>
-                        <li>Impresión en diferentes tipos de papel</li>
+                        <li>Montaje eficiente y profesional</li>
+                        <li>Trabajamos en diferentes tipos de materiales, según sus necesidades</li>
+                        <li>Instalamos su material publicitario con máxima calidad</li>
                     </ul>
                 </div>
                 
@@ -428,7 +433,7 @@
          ============================================ -->
     <footer>
         <p>&copy; 2025 JLM Impresión Digital — Zaragoza</p>
-        <p>Contacto: produccion@jlmimpresion.com | Tel: 614-299-302</p>
+        <p>Contacto: produccion@jlmimpresion.com | Tel: 000-000-000</p>
     </footer>
 
     <!-- ============================================
@@ -445,7 +450,7 @@
                 <p id="imageCaption"></p>
             </div>
         </div>
-        <!-- NOTA: Se han eliminado los botones de navegación (prev/next) y el contador -->
+        <!-- NOTA: Se han eliminado los botones de navegación (prev/next) -->
     </div>
 
     <!-- ============================================
@@ -456,34 +461,45 @@
         // CONFIGURACIÓN DE LAS IMÁGENES DE LA GALERÍA
         // ============================================
         // Array con todos los datos de las imágenes
-        // IMPORTANTE: Como la primera imagen está comentada en el HTML,
-        // solo incluimos las 5 imágenes visibles
+        // Cada objeto contiene:
+        // - src: ruta de la imagen
+        // - alt: texto alternativo para accesibilidad
+        // - caption: texto descriptivo que aparece en el modal
         const imagenesGaleria = [
-            // Nota: La imagen catalogolibrosfolletos_0.jpg está excluida porque está comentada en el HTML
             {
-                src: './img/catalogolibrosfolletos_1.jpg',
-                alt: 'Folleto promocional',
-                caption: ''
+                src: './img/rotulacioncart-01.jpg',
+                alt: 'Ejemplo de rotulación y cartelería',
+                caption: 'Rotulación para fachada comercial'
             },
             {
-                src: './img/catalogolibrosfolletos_2.jpg',
-                alt: 'Díptico informativo',
-                caption: ''
+                src: './img/rotulacioncart-02.jpg',
+                alt: 'Rotulación para establecimiento comercial',
+                caption: 'Rotulación para establecimiento comercial'
             },
             {
-                src: './img/catalogolibrosfolletos_3.jpg',
-                alt: 'Tríptico publicitario',
-                caption: ''
+                src: './img/rotulacioncart-03.jpg',
+                alt: 'Cartelería informativa',
+                caption: 'Cartelería informativa'
             },
             {
-                src: './img/catalogolibrosfolletos_4.jpg',
-                alt: 'Libro institucional',
-                caption: ''
+                src: './img/rotulacioncart-04.jpg',
+                alt: 'Señalética direccional',
+                caption: 'Señalética direccional'
             },
             {
-                src: './img/catalogolibrosfolletos_5.jpg',
-                alt: 'Memoria anual',
-                caption: ''
+                src: './img/rotulacioncart-05.jpg',
+                alt: 'Cartel promocional',
+                caption: 'Cartel promocional'
+            },
+            {
+                src: './img/rotulacioncart-07.jpg',
+                alt: 'Rotulación corporativa',
+                caption: 'Rotulación corporativa'
+            },
+            {
+                src: './img/rotulacioncart-08.jpg',
+                alt: 'Cartelería de eventos',
+                caption: 'Cartelería de eventos'
             }
         ];
 
@@ -513,7 +529,6 @@
             /**
              * ABRIR MODAL CON UNA IMAGEN ESPECÍFICA
              * @param {number} index - Índice de la imagen en el array imagenesGaleria
-             * Nota: Los índices en el HTML (data-index) van de 0 a 4 para 5 imágenes
              */
             function openModal(index) {
                 console.log('Abriendo modal con índice:', index);
@@ -599,7 +614,6 @@
                             closeModal();
                             break;
                         // NOTA: No hay navegación con flechas en esta versión
-                        // Las flechas (ArrowRight, ArrowLeft) ya no tienen función
                     }
                 }
             });

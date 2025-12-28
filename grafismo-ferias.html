@@ -113,6 +113,12 @@
             height: 200px;
             object-fit: cover;
             display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .servicio-main-image:hover {
+            transform: scale(1.02);
         }
 
         .servicio-content {
@@ -257,7 +263,7 @@
         }
 
         /* ============================================
-           ESTILOS PARA EL MODAL/LIGHTBOX
+           ESTILOS PARA EL MODAL/LIGHTBOX SIMPLIFICADO
            ============================================ */
         
         .modal {
@@ -321,40 +327,6 @@
             background: rgba(0, 0, 0, 0.8);
         }
 
-        .modal-nav {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 65px;
-            height: 65px;
-            color: white;
-            font-weight: bold;
-            font-size: 32px;
-            transition: 0.3s;
-            user-select: none;
-            z-index: 1001;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
-
-        .modal-nav:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .prev {
-            left: 35px;
-        }
-
-        .next {
-            right: 35px;
-        }
-
         .modal-info {
             color: white;
             text-align: center;
@@ -363,14 +335,6 @@
             bottom: 0;
             width: 100%;
             background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-        }
-
-        #imageCounter {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-bottom: 8px;
-            display: block;
-            color: #ddd;
         }
 
         #imageCaption {
@@ -390,20 +354,6 @@
         }
 
         @media (max-width: 768px) {
-            .modal-nav {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
-            }
-            
-            .prev {
-                left: 15px;
-            }
-            
-            .next {
-                right: 15px;
-            }
-            
             .close-modal {
                 top: 20px;
                 right: 20px;
@@ -423,12 +373,6 @@
         }
 
         @media (max-width: 480px) {
-            .modal-nav {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-            }
-            
             .modal-image {
                 max-height: 65vh;
             }
@@ -447,7 +391,7 @@
     <main class="galeria-page">
         <section class="galeria-hero">
             <h1>Grafismo para Ferias y Eventos</h1>
-            <p>Descubre nuestros trabajos en diferentes materiales y aplicaciones</p>
+            <p>Descubre nuestros trabajos en diferentes materiales explorando nuestra galeria</p>
         </section>
 
         <!-- CONTENEDOR DE CARDS DE SERVICIOS -->
@@ -457,24 +401,21 @@
             <div class="servicio-card">
                 <div class="servicio-header" data-service="carton-pluma">
                     <h3>Cartón Pluma/Foam</h3>
-                    <span class="toggle-icon">▼</span>
+                    <span class="toggle-icon">+</span>
                 </div>
-                <img src="./img/cartonplumavideo.gif"  alt="Trabajos en cartón pluma" class="servicio-main-image" loading="lazy">  
+                <!-- GIF PRINCIPAL - también clickeable -->
+                <img src="./img/cartonplumavideo.gif" alt="Animación de montaje en cartón pluma" class="servicio-main-image" loading="lazy" data-index="0">
                 
                 <div class="servicio-content" id="carton-pluma">
-                    <p></p>
                     <div class="galeria-grid">
-                        <div class="galeria-item" data-index="0">
-                            <img src="./img/feria-07.jpg" alt="Panel en cartón pluma para stand" loading="lazy">
-                            <div class="galeria-caption"></div>
-                        </div>
                         <div class="galeria-item" data-index="1">
-                            <img src="./img/feria-09.jpg" alt="Señalética en cartón pluma" loading="lazy">
-                            <div class="galeria-caption"></div>
+                            <img src="./img/feria-07.jpg" alt="Panel en cartón pluma para stand" loading="lazy">
                         </div>
                         <div class="galeria-item" data-index="2">
+                            <img src="./img/feria-09.jpg" alt="Señalética en cartón pluma" loading="lazy">
+                        </div>
+                        <div class="galeria-item" data-index="3">
                             <img src="./img/feria-05.jpg" alt="Expositor en cartón pluma" loading="lazy">
-                            <div class="galeria-caption"></div>
                         </div>
                     </div>
                 </div>
@@ -484,25 +425,24 @@
             <div class="servicio-card">
                 <div class="servicio-header" data-service="vinilo">
                     <h3>Vinilo</h3>
-                    <span class="toggle-icon">▼</span>
+                    <span class="toggle-icon">+</span>
                 </div>
-                <img src="./img/vinilovideo.gif" alt="Vinilo gif" class="servicio-main-image" loading="lazy">
+                <!-- GIF PRINCIPAL - también clickeable -->
+                <img src="./img/vinilovideo.gif" alt="Animación de aplicación de vinilo" class="servicio-main-image" loading="lazy" data-index="4">
                 
                 <div class="servicio-content" id="vinilo">
-                    <p></p>
                     <div class="galeria-grid">
-                        <div class="galeria-item" data-index="3">
+                        <div class="galeria-item" data-index="5">
                             <img src="./img/vinilo.jpg" alt="Vinilo para escaparate" loading="lazy">
-                            <div class="galeria-caption"></div>
                         </div>
-                        <div class="galeria-item" data-index="4">
+                        <div class="galeria-item" data-index="6">
                             <img src="./img/vinilo-02.jpg" alt="Rotulación vehicular" loading="lazy">
-                            <div class="galeria-caption"></div>
                         </div>
-                        <!--div class="galeria-item" data-index="5">
-                            <img src="./img/vinilo-03.jpg" alt="Vinilo decorativo" loading="lazy">
-                            <div class="galeria-caption">Vinilo decorativo mural</div>
-                        </div--->
+                        
+                         <div class="galeria-item" data-index="7">
+                            <img src="./img/vinilamarillo.jpg" alt="vinilo" loading="lazy">
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -510,26 +450,24 @@
             <!-- CARD 3: LONAS Y TRUSS -->
             <div class="servicio-card">
                 <div class="servicio-header" data-service="truss">
-                    <h3>Lonas y Truss</h3>
-                    <span class="toggle-icon">▼</span>
+                    <h3>Truss y Escenarios</h3>
+                    <span class="toggle-icon">+</span>
                 </div>
-                <img src="./img/trussgif.gif" alt="Estructuras con truss" class="servicio-main-image" loading="lazy">
+                <!-- GIF PRINCIPAL - también clickeable -->
+                <img src="./img/trussgif.gif" alt="Animación de montaje de estructura truss" class="servicio-main-image" loading="lazy" data-index="8">
                 
                 <div class="servicio-content" id="truss">
-                    <p></p>
                     <div class="galeria-grid">
-                        <div class="galeria-item" data-index="6">
+                        <div class="galeria-item" data-index="9">
                             <img src="./img/truss.jpg" alt="Estructura de truss con lona" loading="lazy">
-                            <div class="galeria-caption"></div>
                         </div>
-                        <div class="galeria-item" data-index="7">
+                        <div class="galeria-item" data-index="10">
                             <img src="./img/truss1.jpg" alt="Stand modular con truss" loading="lazy">
-                            <div class="galeria-caption"></div>
                         </div>
-                        <!--div class="galeria-item" data-index="8">
-                            <img src="./img/truss-03.jpg" alt="Escenario con truss" loading="lazy">
-                            <div class="galeria-caption"></div>
-                        </div--->
+                        
+                        <div class="galeria-item" data-index="11">
+                            <img src="./img/trussjlm.jpg" alt="Stand modular con truss" loading="lazy">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -543,10 +481,7 @@
                 <div class="info-text">
                     <h3>Materiales y aplicaciones</h3>
                     <ul>
-                        <li><strong>Cartón Pluma:</strong> Ligero, rígido, perfecto para interiores y señalética</li>
-                        <li><strong>Vinilo:</strong> Adhesivo de alta durabilidad para cristales, vehículos y paredes</li>
-                        <li><strong>Lonas y Truss:</strong> Estructuras modulares reutilizables para eventos y ferias</li>
-                        <li>Impresión digital de alta resolución</li>
+                        <li>Impresión digital de calidad</li>
                         <li>Montaje y desmontaje profesional</li>
                         <li>Diseño personalizado según necesidades</li>
                     </ul>
@@ -554,7 +489,7 @@
                 
                 <div class="info-contact">
                     <h3>¿Necesitas presupuesto?</h3>
-                    <p>Contáctanos para un asesoramiento personalizado según tu proyecto.</p>
+                    <p>Contáctanos para un asesoramiento personalizado (sin compromiso), según tu proyecto.</p>
                     <a href="index.html#contacto" class="btn btn-primary">Solicitar presupuesto</a>
                 </div>
             </div>
@@ -562,154 +497,162 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Impresión Digital JLM  — Zaragoza</p>
-        <p>Contacto: produccion@jlmimpresiondigital.com | Tel: 614 - 299 - 302</p>
+        <p>&copy; 2025 Impresión Digital JLM — Zaragoza</p>
+        <p>Contacto: produccion@jlmimpresiondigital.com | Tel: 614-299-302</p>
     </footer>
 
-    <!-- MODAL PARA EXPANDIR IMÁGENES -->
+    <!-- MODAL PARA EXPANDIR IMÁGENES - VERSIÓN SIMPLIFICADA -->
     <div id="imageModal" class="modal">
         <span class="close-modal">&times;</span>
         <div class="modal-content">
             <img class="modal-image" id="expandedImage" src="" alt="">
             <div class="modal-info">
-                <span id="imageCounter"></span>
                 <p id="imageCaption"></p>
             </div>
         </div>
-        <a class="modal-nav prev">&#10094;</a>
-        <a class="modal-nav next">&#10095;</a>
     </div>
 
     <script>
-        // SCRIPT PARA EL MODAL Y LAS CARDS
-        
-        // Datos de TODAS las imágenes (9 imágenes: 3 servicios × 3 imágenes)
+        // SCRIPT PARA EL MODAL Y LAS CARDS - VERSIÓN SIMPLIFICADA SIN CARRUSEL
+
+        // Datos de TODAS las imágenes (10 imágenes en total)
         const imagenesGaleria = [
-            // Cartón Pluma (0-2)
-            {
-                src: './img/cartonplumavideo.gif',
-                alt: 'Panel de stand cartón pluma',
+            // Cartón Pluma - 4 imágenes
+            { 
+                src: './img/cartonplumavideo.gif', 
+                alt: 'Animación de montaje en cartón pluma', 
                 caption: ''
             },
-            {
-                src: './img/feria-07.jpg',
-                alt: 'Panel de stand cartón pluma',
+            { 
+                src: './img/feria-07.jpg', 
+                alt: 'Panel de stand cartón pluma', 
                 caption: ''
             },
-            {
-                src: './img/feria-09.jpg',
-                alt: 'Señalética direccional en cartón pluma',
+            { 
+                src: './img/feria-09.jpg', 
+                alt: 'Señalética direccional en cartón pluma', 
                 caption: ''
             },
-            {
-                src: './img/feria-05.jpg',
-                alt: 'Expositor promocional en cartón pluma',
+            { 
+                src: './img/feria-05.jpg', 
+                alt: 'Expositor promocional en cartón pluma', 
                 caption: ''
             },
-            
-            // Vinilo (3-5)
-            {
-                src: './img/vinilovideo.gif',
-                alt: 'Panel de stand cartón pluma',
+
+            // Vinilo - 3 imágenes
+            { 
+                src: './img/vinilovideo.gif', 
+                alt: 'Animación de aplicación de vinilo', 
                 caption: ''
             },
-            {
-                src: './img/vinilo.jpg',
-                alt: 'Vinilo adhesivo para escaparate',
+            { 
+                src: './img/vinilo.jpg', 
+                alt: 'Vinilo adhesivo para escaparate', 
                 caption: ''
             },
-            {
-                src: './img/vinilo-02.jpg',
-                alt: 'Rotulación completa de vehículo',
+            { 
+                src: './img/vinilo-02.jpg', 
+                alt: 'Rotulación completa de vehículo', 
                 caption: ''
             },
-            
-            
-            // Lonas y Truss (6-8)
-            {
-                src: './img/trussgif.gif',
-                alt: 'Panel de stand cartón pluma',
+             { 
+                src: './img/vinilamarillo.jpg', 
+                alt: 'Vinilo adhesivo para escaparate', 
                 caption: ''
             },
-            {
-                src: './img/truss.jpg',
-                alt: 'Estructura completa de truss con lona',
+
+            // Truss y Escenarios - 3 imágenes
+            { 
+                src: './img/trussgif.gif', 
+                alt: 'Animación de montaje de estructura truss', 
                 caption: ''
             },
-            {
-                src: './img/truss1.jpg',
-                alt: 'Stand modular para feria con truss',
+            { 
+                src: './img/truss.jpg', 
+                alt: 'Estructura completa de truss con lona', 
+                caption: ''
+            },
+            { 
+                src: './img/truss1.jpg', 
+                alt: 'Stand modular para feria con truss', 
+                caption: ''
+            },
+            { 
+                src: './img/trussjlm.jpg', 
+                alt: 'Stand modular para feria con truss', 
                 caption: ''
             }
         ];
 
         // Esperar a que todo el DOM esté cargado
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM cargado - inicializando galería y cards');
+            console.log('DOM cargado - inicializando galería');
+
+            // ========== CONFIGURACIÓN DEL MODAL SIMPLIFICADO ==========
             
-            // ========== CONFIGURACIÓN DEL MODAL ==========
+            // Obtener elementos del DOM para el modal
             const modal = document.getElementById('imageModal');
             const expandedImage = document.getElementById('expandedImage');
-            const imageCounter = document.getElementById('imageCounter');
             const imageCaption = document.getElementById('imageCaption');
             const closeBtn = document.querySelector('.close-modal');
-            const prevBtn = document.querySelector('.prev');
-            const nextBtn = document.querySelector('.next');
+            
+            // Obtener TODOS los elementos clickeables: imágenes principales + galería items
+            const mainImages = document.querySelectorAll('.servicio-main-image');
             const galleryItems = document.querySelectorAll('.galeria-item');
-            
-            let currentIndex = 0;
-            
+
             // FUNCIÓN: Abrir modal con una imagen específica
             function openModal(index) {
+                console.log('Abriendo modal con índice:', index);
+                
+                // Verificar que el índice sea válido
                 if (index < 0 || index >= imagenesGaleria.length) {
                     console.error('Índice fuera de rango');
                     return;
                 }
                 
-                currentIndex = index;
-                const imagenActual = imagenesGaleria[currentIndex];
+                // Obtener la imagen actual
+                const imagenActual = imagenesGaleria[index];
                 
+                // Actualizar el modal con la imagen
                 expandedImage.src = imagenActual.src;
                 expandedImage.alt = imagenActual.alt;
                 imageCaption.textContent = imagenActual.caption;
-                imageCounter.textContent = `${currentIndex + 1} / ${imagenesGaleria.length}`;
                 
+                // Mostrar el modal
                 modal.style.display = 'block';
+                
+                // Prevenir scroll del body
                 document.body.style.overflow = 'hidden';
                 document.body.classList.add('modal-open');
             }
-            
+
             // FUNCIÓN: Cerrar modal
             function closeModal() {
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto';
                 document.body.classList.remove('modal-open');
             }
-            
-            // FUNCIÓN: Mostrar siguiente imagen
-            function nextImage() {
-                currentIndex = (currentIndex + 1) % imagenesGaleria.length;
-                openModal(currentIndex);
-            }
-            
-            // FUNCIÓN: Mostrar imagen anterior
-            function prevImage() {
-                currentIndex = (currentIndex - 1 + imagenesGaleria.length) % imagenesGaleria.length;
-                openModal(currentIndex);
-            }
-            
-            // ASIGNAR EVENTOS A LAS IMÁGENES INDIVIDUALES
-            galleryItems.forEach((item, index) => {
-                item.addEventListener('click', function(e) {
+
+            // ASIGNAR EVENTOS A LAS IMÁGENES PRINCIPALES (GIFs)
+            mainImages.forEach((img) => {
+                img.addEventListener('click', function(e) {
                     e.preventDefault();
+                    const index = parseInt(this.getAttribute('data-index'));
                     openModal(index);
                 });
             });
-            
-            // ASIGNAR EVENTOS A LOS BOTONES DEL MODAL
+
+            // ASIGNAR EVENTOS A LOS ÍTEMS DE LA GALERÍA
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const itemIndex = parseInt(this.getAttribute('data-index'));
+                    openModal(itemIndex);
+                });
+            });
+
+            // ASIGNAR EVENTOS PARA CERRAR EL MODAL
             closeBtn.addEventListener('click', closeModal);
-            prevBtn.addEventListener('click', prevImage);
-            nextBtn.addEventListener('click', nextImage);
             
             // CERRAR MODAL AL HACER CLIC FUERA DE LA IMAGEN
             modal.addEventListener('click', function(e) {
@@ -717,93 +660,73 @@
                     closeModal();
                 }
             });
-            
-            // NAVEGACIÓN CON TECLADO
+
+            // NAVEGACIÓN CON TECLADO (solo para cerrar con ESC)
             document.addEventListener('keydown', function(e) {
-                if (modal.style.display === 'block') {
-                    switch(e.key) {
-                        case 'Escape':
-                            closeModal();
-                            break;
-                        case 'ArrowRight':
-                            nextImage();
-                            break;
-                        case 'ArrowLeft':
-                            prevImage();
-                            break;
-                    }
+                if (modal.style.display === 'block' && e.key === 'Escape') {
+                    closeModal();
                 }
             });
-            
+
             // ========== CONFIGURACIÓN DE LAS CARDS ==========
+            
+            // Obtener todos los encabezados de las cards
             const servicioHeaders = document.querySelectorAll('.servicio-header');
             
+            // Obtener todos los contenidos de las cards
+            const servicioContent = document.querySelectorAll('.servicio-content');
+            
+            // Abrir TODAS las cards al cargar la página
+            servicioContent.forEach(content => {
+                content.classList.add('active');
+            });
+            
+            servicioHeaders.forEach(header => {
+                header.classList.add('active');
+            });
+
+            // Alternar manualmente al hacer clic en el encabezado
             servicioHeaders.forEach(header => {
                 header.addEventListener('click', function() {
                     const serviceId = this.getAttribute('data-service');
                     const content = document.getElementById(serviceId);
                     const icon = this.querySelector('.toggle-icon');
                     
-                    // Cerrar todos los demás
-                    document.querySelectorAll('.servicio-content.active').forEach(activeContent => {
-                        if (activeContent.id == serviceId) {
-                            activeContent.classList.remove('active');
-                            activeContent.previousElementSibling.querySelector('.toggle-icon').style.transform = 'rotate(0deg)';
-                        }
-                    });
-                    
-                    // Alternar el actual
+                    // Alternar la clase 'active' en el contenido
                     content.classList.toggle('active');
+                    
+                    // Alternar la clase 'active' en el encabezado
                     this.classList.toggle('active');
                     
-                    if (content.classList.contains('active')) {
-                        icon.style.transform = 'rotate(180deg)';
-                        // Desplazar suavemente a la card si es necesario
-                        setTimeout(() => {
-                            this.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }, 300);
-                    } else {
-                        icon.style.transform = 'rotate(0deg)';
+                    // Cambiar el texto del ícono
+                    if (icon) {
+                        if (content.classList.contains('active')) {
+                            icon.innerHTML = '-';
+                            icon.style.transform = 'rotate(0deg)';
+                        } else {
+                            icon.innerHTML = '+';
+                        }
                     }
                 });
             });
-            
-            // Abrir la primera card por defecto
-            document.querySelector('.servicio-header').click();
-            
-            // PRECARGAR IMÁGENES
+
+            // PRECARGAR IMÁGENES PARA MEJOR EXPERIENCIA
             window.addEventListener('load', function() {
                 console.log('Precargando imágenes...');
+                
+                // Precargar todas las imágenes de la galería
                 imagenesGaleria.forEach(imagen => {
                     const img = new Image();
                     img.src = imagen.src;
                 });
                 
-                // También precargar imágenes principales
-                const mainImages = [
-                    './img/carton-pluma-main.jpg',
-                    './img/vinilo-main.jpg',
-                    './img/truss-main.jpg'
-                ];
-                mainImages.forEach(src => {
-                    const img = new Image();
-                    img.src = src;
-                });
+                console.log('Precarga de imágenes completada');
             });
-            
-            // PREVENIR COMPORTAMIENTO POR DEFECTO
-            prevBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-            });
-            
-            nextBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-            });
-            
-            console.log('Galería y cards inicializadas correctamente');
+
+            console.log('Galería inicializada correctamente (sin carrusel)');
         });
-        
-        // Manejo de errores
+
+        // Manejo de errores global
         window.addEventListener('error', function(e) {
             console.error('Error en la página:', e.message);
             console.error('En el archivo:', e.filename);
