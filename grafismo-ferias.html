@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - Grafismo para Ferias | JLM Impresión Digital</title>
+    <style>
+        /* ESTILOS GENERALES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+        }
+
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .galeria-hero {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+        }
+
+        .galeria-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .galeria-hero p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        /* CARDS DE SERVICIOS */
+        .servicios-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .servicio-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .servicio-header {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #3498db;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .servicio-header h3 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin: 0;
+        }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            color: #3498db;
+            transition: transform 0.3s;
+        }
+
+        .servicio-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .servicio-main-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .servicio-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .servicio-content.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        /* GRID DE IMÁGENES DENTRO DE CADA CARD */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .galeria-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            background: white;
+        }
+
+        .galeria-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .galeria-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .galeria-caption {
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            background: white;
+        }
+
+        /* SECCIÓN DE INFORMACIÓN */
+        .galeria-info {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .galeria-info h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .info-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .info-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .servicios-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .galeria-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-text h3, .info-contact h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .info-text ul {
+            list-style-position: inside;
+            padding-left: 15px;
+        }
+
+        .info-text li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+
+        .info-contact p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-primary {
+            background: #3498db;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* ============================================
+           ESTILOS PARA EL MODAL/LIGHTBOX
+           ============================================ */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+            overflow: hidden;
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 100%;
+            max-width: 1200px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-image {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+            margin: auto;
+            display: block;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #fff;
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s;
+            background: rgba(0, 0, 0, 0.5);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: #ddd;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-nav {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 65px;
+            height: 65px;
+            color: white;
+            font-weight: bold;
+            font-size: 32px;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .modal-nav:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev {
+            left: 35px;
+        }
+
+        .next {
+            right: 35px;
+        }
+
+        .modal-info {
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        }
+
+        #imageCounter {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+            display: block;
+            color: #ddd;
+        }
+
+        #imageCaption {
+            font-size: 22px;
+            margin: 0;
+            font-weight: 600;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .modal-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            
+            .prev {
+                left: 15px;
+            }
+            
+            .next {
+                right: 15px;
+            }
+            
+            .close-modal {
+                top: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 35px;
+            }
+            
+            .modal-image {
+                max-width: 95%;
+                max-height: 70vh;
+            }
+            
+            #imageCaption {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-nav {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            
+            .modal-image {
+                max-height: 65vh;
+            }
+            
+            .galeria-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html#servicios" class="back-btn">← Volver a Servicios</a>
+    </header>
+
+    <main class="galeria-page">
+        <section class="galeria-hero">
+            <h1>Grafismo para Ferias y Eventos</h1>
+            <p>Descubre nuestros trabajos en diferentes materiales y aplicaciones</p>
+        </section>
+
+        <!-- CONTENEDOR DE CARDS DE SERVICIOS -->
+        <section class="servicios-container">
+            
+            <!-- CARD 1: CARTÓN PLUMA -->
+            <div class="servicio-card">
+                <div class="servicio-header" data-service="carton-pluma">
+                    <h3>Cartón Pluma/Foam</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <img src="./img/cartonplumavideo.gif"  alt="Trabajos en cartón pluma" class="servicio-main-image" loading="lazy">  
+                
+                <div class="servicio-content" id="carton-pluma">
+                    <p></p>
+                    <div class="galeria-grid">
+                        <div class="galeria-item" data-index="0">
+                            <img src="./img/feria-07.jpg" alt="Panel en cartón pluma para stand" loading="lazy">
+                            <div class="galeria-caption"></div>
+                        </div>
+                        <div class="galeria-item" data-index="1">
+                            <img src="./img/feria-09.jpg" alt="Señalética en cartón pluma" loading="lazy">
+                            <div class="galeria-caption"></div>
+                        </div>
+                        <div class="galeria-item" data-index="2">
+                            <img src="./img/feria-05.jpg" alt="Expositor en cartón pluma" loading="lazy">
+                            <div class="galeria-caption"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2: VINILO -->
+            <div class="servicio-card">
+                <div class="servicio-header" data-service="vinilo">
+                    <h3>Vinilo</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <img src="./img/vinilovideo.gif" alt="Vinilo gif" class="servicio-main-image" loading="lazy">
+                
+                <div class="servicio-content" id="vinilo">
+                    <p></p>
+                    <div class="galeria-grid">
+                        <div class="galeria-item" data-index="3">
+                            <img src="./img/vinilo.jpg" alt="Vinilo para escaparate" loading="lazy">
+                            <div class="galeria-caption"></div>
+                        </div>
+                        <div class="galeria-item" data-index="4">
+                            <img src="./img/vinilo-02.jpg" alt="Rotulación vehicular" loading="lazy">
+                            <div class="galeria-caption"></div>
+                        </div>
+                        <!--div class="galeria-item" data-index="5">
+                            <img src="./img/vinilo-03.jpg" alt="Vinilo decorativo" loading="lazy">
+                            <div class="galeria-caption">Vinilo decorativo mural</div>
+                        </div--->
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3: LONAS Y TRUSS -->
+            <div class="servicio-card">
+                <div class="servicio-header" data-service="truss">
+                    <h3>Lonas y Truss</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <img src="./img/trussgif.gif" alt="Estructuras con truss" class="servicio-main-image" loading="lazy">
+                
+                <div class="servicio-content" id="truss">
+                    <p></p>
+                    <div class="galeria-grid">
+                        <div class="galeria-item" data-index="6">
+                            <img src="./img/truss.jpg" alt="Estructura de truss con lona" loading="lazy">
+                            <div class="galeria-caption"></div>
+                        </div>
+                        <div class="galeria-item" data-index="7">
+                            <img src="./img/truss1.jpg" alt="Stand modular con truss" loading="lazy">
+                            <div class="galeria-caption"></div>
+                        </div>
+                        <!--div class="galeria-item" data-index="8">
+                            <img src="./img/truss-03.jpg" alt="Escenario con truss" loading="lazy">
+                            <div class="galeria-caption"></div>
+                        </div--->
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECCIÓN DE INFORMACIÓN -->
+        <section class="galeria-info">
+            <h2>Detalles del servicio</h2>
+            <div class="info-content">
+                <div class="info-text">
+                    <h3>Materiales y aplicaciones</h3>
+                    <ul>
+                        <li><strong>Cartón Pluma:</strong> Ligero, rígido, perfecto para interiores y señalética</li>
+                        <li><strong>Vinilo:</strong> Adhesivo de alta durabilidad para cristales, vehículos y paredes</li>
+                        <li><strong>Lonas y Truss:</strong> Estructuras modulares reutilizables para eventos y ferias</li>
+                        <li>Impresión digital de alta resolución</li>
+                        <li>Montaje y desmontaje profesional</li>
+                        <li>Diseño personalizado según necesidades</li>
+                    </ul>
+                </div>
+                
+                <div class="info-contact">
+                    <h3>¿Necesitas presupuesto?</h3>
+                    <p>Contáctanos para un asesoramiento personalizado según tu proyecto.</p>
+                    <a href="index.html#contacto" class="btn btn-primary">Solicitar presupuesto</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Impresión Digital JLM  — Zaragoza</p>
+        <p>Contacto: produccion@jlmimpresiondigital.com | Tel: 614 - 299 - 302</p>
+    </footer>
+
+    <!-- MODAL PARA EXPANDIR IMÁGENES -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img class="modal-image" id="expandedImage" src="" alt="">
+            <div class="modal-info">
+                <span id="imageCounter"></span>
+                <p id="imageCaption"></p>
+            </div>
+        </div>
+        <a class="modal-nav prev">&#10094;</a>
+        <a class="modal-nav next">&#10095;</a>
+    </div>
+
+    <script>
+        // SCRIPT PARA EL MODAL Y LAS CARDS
+        
+        // Datos de TODAS las imágenes (9 imágenes: 3 servicios × 3 imágenes)
+        const imagenesGaleria = [
+            // Cartón Pluma (0-2)
+            {
+                src: './img/cartonplumavideo.gif',
+                alt: 'Panel de stand cartón pluma',
+                caption: ''
+            },
+            {
+                src: './img/feria-07.jpg',
+                alt: 'Panel de stand cartón pluma',
+                caption: ''
+            },
+            {
+                src: './img/feria-09.jpg',
+                alt: 'Señalética direccional en cartón pluma',
+                caption: ''
+            },
+            {
+                src: './img/feria-05.jpg',
+                alt: 'Expositor promocional en cartón pluma',
+                caption: ''
+            },
+            
+            // Vinilo (3-5)
+            {
+                src: './img/vinilovideo.gif',
+                alt: 'Panel de stand cartón pluma',
+                caption: ''
+            },
+            {
+                src: './img/vinilo.jpg',
+                alt: 'Vinilo adhesivo para escaparate',
+                caption: ''
+            },
+            {
+                src: './img/vinilo-02.jpg',
+                alt: 'Rotulación completa de vehículo',
+                caption: ''
+            },
+            
+            
+            // Lonas y Truss (6-8)
+            {
+                src: './img/trussgif.gif',
+                alt: 'Panel de stand cartón pluma',
+                caption: ''
+            },
+            {
+                src: './img/truss.jpg',
+                alt: 'Estructura completa de truss con lona',
+                caption: ''
+            },
+            {
+                src: './img/truss1.jpg',
+                alt: 'Stand modular para feria con truss',
+                caption: ''
+            }
+        ];
+
+        // Esperar a que todo el DOM esté cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado - inicializando galería y cards');
+            
+            // ========== CONFIGURACIÓN DEL MODAL ==========
+            const modal = document.getElementById('imageModal');
+            const expandedImage = document.getElementById('expandedImage');
+            const imageCounter = document.getElementById('imageCounter');
+            const imageCaption = document.getElementById('imageCaption');
+            const closeBtn = document.querySelector('.close-modal');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            const galleryItems = document.querySelectorAll('.galeria-item');
+            
+            let currentIndex = 0;
+            
+            // FUNCIÓN: Abrir modal con una imagen específica
+            function openModal(index) {
+                if (index < 0 || index >= imagenesGaleria.length) {
+                    console.error('Índice fuera de rango');
+                    return;
+                }
+                
+                currentIndex = index;
+                const imagenActual = imagenesGaleria[currentIndex];
+                
+                expandedImage.src = imagenActual.src;
+                expandedImage.alt = imagenActual.alt;
+                imageCaption.textContent = imagenActual.caption;
+                imageCounter.textContent = `${currentIndex + 1} / ${imagenesGaleria.length}`;
+                
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                document.body.classList.add('modal-open');
+            }
+            
+            // FUNCIÓN: Cerrar modal
+            function closeModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                document.body.classList.remove('modal-open');
+            }
+            
+            // FUNCIÓN: Mostrar siguiente imagen
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % imagenesGaleria.length;
+                openModal(currentIndex);
+            }
+            
+            // FUNCIÓN: Mostrar imagen anterior
+            function prevImage() {
+                currentIndex = (currentIndex - 1 + imagenesGaleria.length) % imagenesGaleria.length;
+                openModal(currentIndex);
+            }
+            
+            // ASIGNAR EVENTOS A LAS IMÁGENES INDIVIDUALES
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal(index);
+                });
+            });
+            
+            // ASIGNAR EVENTOS A LOS BOTONES DEL MODAL
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', prevImage);
+            nextBtn.addEventListener('click', nextImage);
+            
+            // CERRAR MODAL AL HACER CLIC FUERA DE LA IMAGEN
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // NAVEGACIÓN CON TECLADO
+            document.addEventListener('keydown', function(e) {
+                if (modal.style.display === 'block') {
+                    switch(e.key) {
+                        case 'Escape':
+                            closeModal();
+                            break;
+                        case 'ArrowRight':
+                            nextImage();
+                            break;
+                        case 'ArrowLeft':
+                            prevImage();
+                            break;
+                    }
+                }
+            });
+            
+            // ========== CONFIGURACIÓN DE LAS CARDS ==========
+            const servicioHeaders = document.querySelectorAll('.servicio-header');
+            
+            servicioHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const serviceId = this.getAttribute('data-service');
+                    const content = document.getElementById(serviceId);
+                    const icon = this.querySelector('.toggle-icon');
+                    
+                    // Cerrar todos los demás
+                    document.querySelectorAll('.servicio-content.active').forEach(activeContent => {
+                        if (activeContent.id == serviceId) {
+                            activeContent.classList.remove('active');
+                            activeContent.previousElementSibling.querySelector('.toggle-icon').style.transform = 'rotate(0deg)';
+                        }
+                    });
+                    
+                    // Alternar el actual
+                    content.classList.toggle('active');
+                    this.classList.toggle('active');
+                    
+                    if (content.classList.contains('active')) {
+                        icon.style.transform = 'rotate(180deg)';
+                        // Desplazar suavemente a la card si es necesario
+                        setTimeout(() => {
+                            this.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 300);
+                    } else {
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+            
+            // Abrir la primera card por defecto
+            document.querySelector('.servicio-header').click();
+            
+            // PRECARGAR IMÁGENES
+            window.addEventListener('load', function() {
+                console.log('Precargando imágenes...');
+                imagenesGaleria.forEach(imagen => {
+                    const img = new Image();
+                    img.src = imagen.src;
+                });
+                
+                // También precargar imágenes principales
+                const mainImages = [
+                    './img/carton-pluma-main.jpg',
+                    './img/vinilo-main.jpg',
+                    './img/truss-main.jpg'
+                ];
+                mainImages.forEach(src => {
+                    const img = new Image();
+                    img.src = src;
+                });
+            });
+            
+            // PREVENIR COMPORTAMIENTO POR DEFECTO
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+            
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+            
+            console.log('Galería y cards inicializadas correctamente');
+        });
+        
+        // Manejo de errores
+        window.addEventListener('error', function(e) {
+            console.error('Error en la página:', e.message);
+            console.error('En el archivo:', e.filename);
+            console.error('En la línea:', e.lineno);
+        });
+    </script>
+</body>
+</html>
