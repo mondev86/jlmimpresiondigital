@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería - Ropa Perzonalizada | JLM Impresión Digital</title>
+    <title>Galería - Ropa Personalizada | Impresión Digital JLM</title>
     <style>
-        /* ESTILOS GENERALES */
+        /* ============================================
+           ESTILOS GENERALES PARA LA PÁGINA
+           ============================================ */
         * {
             margin: 0;
             padding: 0;
@@ -25,6 +27,7 @@
             padding: 15px 20px;
         }
 
+        /* Botón para volver atrás */
         .back-btn {
             color: white;
             text-decoration: none;
@@ -38,16 +41,18 @@
             text-decoration: underline;
         }
 
+        /* Contenedor principal */
         main {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
+        /* Cabecera de la galería */
         .galeria-hero {
             text-align: center;
             padding: 40px 20px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         .galeria-hero h1 {
@@ -61,14 +66,30 @@
             color: #666;
         }
 
-        /* GRID DE GALERÍA */
+        /* ============================================
+           ESTILOS PARA LAS SECCIONES DE GALERÍA
+           ============================================ */
+        .seccion-grupo {
+            margin-bottom: 60px;
+        }
+
+        .seccion-titulo {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        /* Grid para organizar las imágenes */
         .galeria-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
+        /* Cada ítem de la galería */
         .galeria-item {
             background: white;
             border-radius: 10px;
@@ -78,11 +99,13 @@
             cursor: pointer;
         }
 
+        /* Efecto hover para los ítems */
         .galeria-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
+        /* Imágenes dentro de los ítems */
         .galeria-item img {
             width: 100%;
             height: 250px;
@@ -90,6 +113,7 @@
             display: block;
         }
 
+        /* Texto debajo de cada imagen (vacío en tu caso) */
         .galeria-caption {
             padding: 15px;
             text-align: center;
@@ -98,7 +122,9 @@
             background: white;
         }
 
-        /* SECCIÓN DE INFORMACIÓN */
+        /* ============================================
+           SECCIÓN DE INFORMACIÓN DEL SERVICIO
+           ============================================ */
         .galeria-info {
             background: white;
             padding: 40px;
@@ -114,18 +140,14 @@
             font-size: 2rem;
         }
 
+        /* Contenedor de dos columnas para la información */
         .info-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
         }
 
-        @media (max-width: 768px) {
-            .info-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
+        /* Estilos para textos y listas */
         .info-text h3, .info-contact h3 {
             color: #3498db;
             margin-bottom: 15px;
@@ -147,6 +169,7 @@
             font-size: 1.1rem;
         }
 
+        /* Botón para contactar */
         .btn {
             display: inline-block;
             padding: 12px 30px;
@@ -168,6 +191,9 @@
             background: #2980b9;
         }
 
+        /* ============================================
+           ESTILOS PARA EL FOOTER
+           ============================================ */
         footer {
             background: #2c3e50;
             color: white;
@@ -177,24 +203,25 @@
         }
 
         /* ============================================
-           ESTILOS PARA EL MODAL/LIGHTBOX (LO NUEVO)
+           ESTILOS PARA EL MODAL/LIGHTBOX
+           VERSIÓN SIMPLIFICADA SIN CARRUSEL
            ============================================ */
         
-        /* Modal (fondo) */
+        /* Fondo oscuro del modal */
         .modal {
-            display: none;
+            display: none; /* Oculto por defecto */
             position: fixed;
             z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0, 0, 0, 0.95); /* Fondo oscuro semitransparente */
             animation: fadeIn 0.3s ease;
             overflow: hidden;
         }
 
-        /* Contenido del Modal */
+        /* Contenedor del contenido del modal */
         .modal-content {
             position: relative;
             margin: auto;
@@ -208,18 +235,18 @@
             align-items: center;
         }
 
-        /* Imagen dentro del Modal */
+        /* Imagen dentro del modal */
         .modal-image {
             max-width: 90%;
             max-height: 80vh;
-            object-fit: contain;
+            object-fit: contain; /* Mantiene la proporción de la imagen */
             margin: auto;
             display: block;
             border-radius: 5px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
         }
 
-        /* Botón para cerrar (X) */
+        /* Botón para cerrar el modal (X) */
         .close-modal {
             position: absolute;
             top: 25px;
@@ -228,59 +255,25 @@
             font-size: 45px;
             font-weight: bold;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 1001; /* Por encima de todo */
             transition: color 0.3s;
             background: rgba(0, 0, 0, 0.5);
             width: 55px;
             height: 55px;
-            border-radius: 50%;
+            border-radius: 50%; /* Forma circular */
             display: flex;
             align-items: center;
             justify-content: center;
             line-height: 1;
         }
 
+        /* Efecto hover para el botón de cerrar */
         .close-modal:hover {
             color: #ddd;
             background: rgba(0, 0, 0, 0.8);
         }
 
-        /* Botones de navegación (anterior/siguiente) */
-        .modal-nav {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 65px;
-            height: 65px;
-            color: white;
-            font-weight: bold;
-            font-size: 32px;
-            transition: 0.3s;
-            user-select: none;
-            z-index: 1001;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
-
-        .modal-nav:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .prev {
-            left: 35px;
-        }
-
-        .next {
-            right: 35px;
-        }
-
-        /* Información de la imagen (título y contador) */
+        /* Información de la imagen en el modal */
         .modal-info {
             color: white;
             text-align: center;
@@ -291,14 +284,7 @@
             background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
         }
 
-        #imageCounter {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-bottom: 8px;
-            display: block;
-            color: #ddd;
-        }
-
+        /* Texto descriptivo de la imagen */
         #imageCaption {
             font-size: 22px;
             margin: 0;
@@ -306,33 +292,26 @@
             color: white;
         }
 
-        /* Animación de entrada */
+        /* Animación de entrada del modal */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        /* Efectos para el cuerpo cuando el modal está abierto */
+        /* Cuando el modal está abierto, se deshabilita el scroll del body */
         body.modal-open {
             overflow: hidden;
         }
 
-        /* Responsive para móviles */
+        /* ============================================
+           ESTILOS RESPONSIVE PARA DISPOSITIVOS MÓVILES
+           ============================================ */
         @media (max-width: 768px) {
-            .modal-nav {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
+            .info-content {
+                grid-template-columns: 1fr; /* Una columna en móviles */
             }
             
-            .prev {
-                left: 15px;
-            }
-            
-            .next {
-                right: 15px;
-            }
-            
+            /* Ajustes para el botón de cerrar en móviles */
             .close-modal {
                 top: 20px;
                 right: 20px;
@@ -341,6 +320,7 @@
                 font-size: 35px;
             }
             
+            /* Ajuste del tamaño de la imagen en el modal para móviles */
             .modal-image {
                 max-width: 95%;
                 max-height: 70vh;
@@ -352,20 +332,17 @@
         }
 
         @media (max-width: 480px) {
-            .modal-nav {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-            }
-            
-            .modal-image {
-                max-height: 65vh;
-            }
-            
+            /* En pantallas muy pequeñas, una sola columna */
             .galeria-grid {
                 grid-template-columns: 1fr;
             }
             
+            /* Ajuste del tamaño de la imagen en el modal para pantallas muy pequeñas */
+            .modal-image {
+                max-height: 65vh;
+            }
+            
+            /* Título más pequeño en móviles */
             .galeria-hero h1 {
                 font-size: 2rem;
             }
@@ -373,253 +350,306 @@
     </style>
 </head>
 <body>
+    <!-- ============================================
+         ENCABEZADO CON BOTÓN PARA VOLVER
+         ============================================ -->
     <header>
         <a href="index.html#servicios" class="back-btn">← Volver a Servicios</a>
     </header>
 
+    <!-- ============================================
+         CONTENIDO PRINCIPAL DE LA PÁGINA
+         ============================================ -->
     <main class="galeria-page">
+        <!-- Cabecera principal de la página -->
         <section class="galeria-hero">
-            <h1>Ropa personalizada</h1>
-            <p></p>
+            <h1>Ropa Personalizada</h1>
+            <p>Personalizamos prendas para eventos, empresas y uso personal</p>
         </section>
 
-        <section class="galeria-container">
+        <!-- SECCIÓN 1: ROPA PERSONALIZADA -->
+        <section class="seccion-grupo">
+            <h2 class="seccion-titulo">Ropa Personalizada</h2>
             <div class="galeria-grid">
-                <!--Imagen 1--->
+                <!-- Imagen 1 - Índice 0 -->
                 <div class="galeria-item" data-index="0">
-                    <img src="./img/ropa-01.jpg" loading="lazy">
+                    <img src="./img/ropa-01.jpg" alt="Camiseta personalizada con diseño único" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
-                <!-- Imagen 2 -->
+                <!-- Imagen 2 - Índice 1 -->
                 <div class="galeria-item" data-index="1">
-                    <img src="./img/ropa-02.jpg" alt="Folleto promocional" loading="lazy">
+                    <img src="./img/ropa-02.jpg" alt="Sudadera con estampado personalizado" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
-                <!-- Imagen 3 -->
+                <!-- Imagen 3 - Índice 2 -->
                 <div class="galeria-item" data-index="2">
-                    <img src="./img/pant.jpg" alt="pantalones" loading="lazy">
+                    <img src="./img/chaqueta.jpg" alt="Chaqueta con bordado personalizado" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
-                
-                <!-- Imagen 4 -->
-                <div class="galeria-item" data-index="3">
-                    <img src="./img/chaqueta.jpg" alt="Tríptico publicitario" loading="lazy">
-                    <div class="galeria-caption"></div>
-                </div>
-                
-                <!-- Imagen 5
-                <div-- class="galeria-item" data-index="4">
-                    <img src="./img" alt="Libro institucional" loading="lazy">
-                    <div class="galeria-caption"></div>
-                </div-->
-                
-                <!-- Imagen 6>
-                <div-- class="galeria-item" data-index="5">
-                    <img src="./img" alt="Memoria anual" loading="lazy">
-                    <div class="galeria-caption"></div>
-                </div-->
             </div>
         </section>
 
+        <!-- SECCIÓN 2: ROPA LABORAL -->
+        <section class="seccion-grupo">
+            <h2 class="seccion-titulo">Ropa Laboral</h2>
+            <div class="galeria-grid">
+                <!-- Imagen 4 - Índice 3 -->
+                <div class="galeria-item" data-index="3">
+                    <img src="./img/alta_visiblidad.jpg" alt="Ropa de alta visibilidad para seguridad" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+                
+                <!-- Imagen 5 - Índice 4 -->
+                <div class="galeria-item" data-index="4">
+                    <img src="./img/ropa-laboral.jpg" alt="Uniforme laboral corporativo" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+                
+                <!-- Imagen 6 - Índice 5 -->
+                <div class="galeria-item" data-index="5">
+                    <img src="./img/prendas-frio.jpg" alt="Prendas térmicas para trabajo en frío" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de información sobre el servicio -->
         <section class="galeria-info">
-            <h2>Consultanos</h2>
+            <h2>Consúltanos</h2>
             <div class="info-content">
-                <div class="info-text">
                 <div class="info-contact">
                     <h3>¿No encuentras lo que necesitas?</h3>
-                    <p>Pregunta por mas opciones.</p>
+                    <p>Pregunta por más opciones. Tenemos una amplia variedad de prendas y técnicas de personalización.</p>
                     <a href="index.html#contacto" class="btn btn-primary">Solicitar presupuesto</a>
+                </div>
+                <div class="info-text">
+                    <h3>¿Qué ofrecemos?</h3>
+                    <ul>
+                        <li>Personalización de camisetas, sudaderas, chaquetas</li>
+                        <li>Ropa laboral corporativa</li>
+                        <li>Prendas de alta visibilidad</li>
+                        <li>Ropa técnica para diferentes sectores</li>
+                        <li>Estampado, bordado y serigrafía</li>
+                    </ul>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- ============================================
+         FOOTER DE LA PÁGINA
+         ============================================ -->
     <footer>
         <p>&copy; 2025 JLM Impresión Digital — Zaragoza</p>
-        <p>Contacto: produccion@jlmimpresion.com | Tel: 000-000-000</p>
+        <p>Contacto: produccion@jlmimpresion.com | Tel: 614-299-302</p>
+        <a href="index.html#servicios" class="back-btn">⬅️</a>
     </footer>
 
-    <!-- MODAL PARA EXPANDIR IMÁGENES -->
+    <!-- ============================================
+         MODAL PARA EXPANDIR IMÁGENES
+         VERSIÓN SIMPLIFICADA SIN BOTONES DE NAVEGACIÓN
+         ============================================ -->
     <div id="imageModal" class="modal">
         <span class="close-modal">&times;</span>
         <div class="modal-content">
+            <!-- Aquí se carga dinámicamente la imagen seleccionada -->
             <img class="modal-image" id="expandedImage" src="" alt="">
             <div class="modal-info">
-                <span id="imageCounter"></span>
+                <!-- Aquí se muestra el texto descriptivo de la imagen -->
                 <p id="imageCaption"></p>
             </div>
         </div>
-        <a class="modal-nav prev">&#10094;</a>
-        <a class="modal-nav next">&#10095;</a>
+        <!-- NOTA: Se han eliminado los botones de navegación (prev/next) y el contador -->
     </div>
 
+    <!-- ============================================
+         SCRIPT JAVASCRIPT - VERSIÓN SIMPLIFICADA
+         ============================================ -->
     <script>
-        // SCRIPT PARA EL MODAL - TODO EN UNO
-        
-        // Datos de las imágenes
+        // ============================================
+        // CONFIGURACIÓN DE LAS IMÁGENES DE LA GALERÍA
+        // ============================================
+        // Array con todos los datos de las 6 imágenes
+        // IMPORTANTE: Los índices 0-5 corresponden a las 6 imágenes de la página
         const imagenesGaleria = [
+            // Ropa Personalizada (índices 0-2)
             {
                 src: './img/ropa-01.jpg',
-                alt: 'Camisetas',
+                alt: 'Camiseta personalizada con diseño único',
                 caption: ''
             },
             {
                 src: './img/ropa-02.jpg',
-                alt: 'ropa',
-                caption: ''
-            },
-            {
-                src: './img/pant.jpg',
-                alt: 'pantalon',
+                alt: 'Sudadera con estampado personalizado',
                 caption: ''
             },
             {
                 src: './img/chaqueta.jpg',
-                alt: 'chaqueta',
+                alt: 'Chaqueta con bordado personalizado',
                 caption: ''
+            },
+            
+            // Ropa Laboral (índices 3-5)
+            {
+                src: './img/alta_visiblidad.jpg',
+                alt: 'Ropa de alta visibilidad para seguridad',
+                caption: 'Ropa de alta visibilidad'
+            },
+            {
+                src: './img/ropa-laboral.jpg',
+                alt: 'Uniforme laboral corporativo',
+                caption: 'Ropa Laboral'
+            },
+            {
+                src: './img/prendas-frio.jpg',
+                alt: 'Prendas térmicas para trabajo en frío',
+                caption: 'Termicas y Chalecos'
             }
         ];
 
-        // Esperar a que todo el DOM esté cargado
+        // ============================================
+        // INICIALIZACIÓN CUANDO EL DOM ESTÁ LISTO
+        // ============================================
+        // Este evento se dispara cuando toda la estructura HTML ha sido cargada
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM cargado - inicializando galería');
+            console.log('DOM cargado - inicializando galería de ropa personalizada');
             
-            // Elementos del DOM
+            // ============================================
+            // OBTENER ELEMENTOS DEL DOM
+            // ============================================
+            // Modal y sus elementos internos
             const modal = document.getElementById('imageModal');
             const expandedImage = document.getElementById('expandedImage');
-            const imageCounter = document.getElementById('imageCounter');
             const imageCaption = document.getElementById('imageCaption');
             const closeBtn = document.querySelector('.close-modal');
-            const prevBtn = document.querySelector('.prev');
-            const nextBtn = document.querySelector('.next');
+            
+            // Todos los elementos de la galería que son clickeables
             const galleryItems = document.querySelectorAll('.galeria-item');
             
-            // Variable para llevar el control de la imagen actual
-            let currentIndex = 0;
+            // ============================================
+            // FUNCIONES PARA MANEJAR EL MODAL
+            // ============================================
             
-            // FUNCIÓN: Abrir modal con una imagen específica
+            /**
+             * ABRIR MODAL CON UNA IMAGEN ESPECÍFICA
+             * @param {number} index - Índice de la imagen en el array imagenesGaleria
+             * Nota: Los índices en el HTML (data-index) van de 0 a 5 para 6 imágenes
+             */
             function openModal(index) {
                 console.log('Abriendo modal con índice:', index);
                 
-                // Verificar que el índice sea válido
+                // Validar que el índice esté dentro del rango del array
                 if (index < 0 || index >= imagenesGaleria.length) {
                     console.error('Índice fuera de rango');
-                    return;
+                    return; // Salir de la función si el índice no es válido
                 }
                 
-                // Actualizar índice actual
-                currentIndex = index;
+                // Obtener los datos de la imagen correspondiente al índice
+                const imagenActual = imagenesGaleria[index];
                 
-                // Obtener la imagen actual
-                const imagenActual = imagenesGaleria[currentIndex];
-                
-                // Actualizar el modal con la imagen
-                expandedImage.src = imagenActual.src;
-                expandedImage.alt = imagenActual.alt;
-                imageCaption.textContent = imagenActual.caption;
-                imageCounter.textContent = `${currentIndex + 1} / ${imagenesGaleria.length}`;
+                // Actualizar el contenido del modal con la imagen seleccionada
+                expandedImage.src = imagenActual.src;  // Establecer la ruta de la imagen
+                expandedImage.alt = imagenActual.alt;  // Establecer el texto alternativo
+                imageCaption.textContent = imagenActual.caption; // Establecer el texto descriptivo
                 
                 // Mostrar el modal
                 modal.style.display = 'block';
                 
-                // Prevenir scroll del body
+                // Deshabilitar el scroll del body para que no se pueda desplazar la página de fondo
                 document.body.style.overflow = 'hidden';
                 document.body.classList.add('modal-open');
                 
                 console.log('Modal mostrado con imagen:', imagenActual.src);
             }
             
-            // FUNCIÓN: Cerrar modal
+            /**
+             * CERRAR EL MODAL
+             * Esta función restaura el estado normal de la página
+             */
             function closeModal() {
                 console.log('Cerrando modal');
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                document.body.classList.remove('modal-open');
+                modal.style.display = 'none'; // Ocultar el modal
+                document.body.style.overflow = 'auto'; // Restaurar el scroll del body
+                document.body.classList.remove('modal-open'); // Quitar la clase que bloquea el scroll
             }
             
-            // FUNCIÓN: Mostrar siguiente imagen
-            function nextImage() {
-                // Calcular nuevo índice (circular)
-                currentIndex = (currentIndex + 1) % imagenesGaleria.length;
-                openModal(currentIndex);
-            }
+            // ============================================
+            // ASIGNAR EVENTOS A LOS ELEMENTOS DE LA GALERÍA
+            // ============================================
             
-            // FUNCIÓN: Mostrar imagen anterior
-            function prevImage() {
-                // Calcular nuevo índice (circular hacia atrás)
-                currentIndex = (currentIndex - 1 + imagenesGaleria.length) % imagenesGaleria.length;
-                openModal(currentIndex);
-            }
-            
-            // ASIGNAR EVENTOS A CADA ÍTEM DE LA GALERÍA
+            // Para cada elemento de la galería, asignar un evento de clic
             galleryItems.forEach((item, index) => {
                 console.log('Asignando evento al item:', index);
                 
                 item.addEventListener('click', function(e) {
                     console.log('Clic en item:', index);
                     
-                    // Prevenir comportamiento por defecto
+                    // Prevenir cualquier comportamiento por defecto del navegador
                     e.preventDefault();
                     
-                    // Abrir modal con esta imagen
+                    // Abrir el modal con la imagen correspondiente al índice del item
                     openModal(index);
                 });
             });
             
-            // ASIGNAR EVENTOS A LOS BOTONES DEL MODAL
-            closeBtn.addEventListener('click', closeModal);
-            prevBtn.addEventListener('click', prevImage);
-            nextBtn.addEventListener('click', nextImage);
+            // ============================================
+            // ASIGNAR EVENTOS PARA CERRAR EL MODAL
+            // ============================================
             
-            // CERRAR MODAL AL HACER CLIC FUERA DE LA IMAGEN
+            // Evento para el botón de cerrar (X)
+            closeBtn.addEventListener('click', closeModal);
+            
+            // Evento para cerrar al hacer clic fuera de la imagen
             modal.addEventListener('click', function(e) {
+                // Si el clic fue directamente en el fondo del modal (no en la imagen)
                 if (e.target === modal) {
                     closeModal();
                 }
             });
             
+            // ============================================
             // NAVEGACIÓN CON TECLADO
+            // ============================================
+            // Solo permitimos cerrar el modal con la tecla ESC
             document.addEventListener('keydown', function(e) {
-                // Solo si el modal está abierto
+                // Solo actuar si el modal está visible
                 if (modal.style.display === 'block') {
                     switch(e.key) {
-                        case 'Escape':
+                        case 'Escape': // Tecla ESC para cerrar
                             closeModal();
                             break;
-                        case 'ArrowRight':
-                            nextImage();
-                            break;
-                        case 'ArrowLeft':
-                            prevImage();
-                            break;
+                        // NOTA: No hay navegación con flechas en esta versión
+                        // Las flechas (ArrowRight, ArrowLeft) ya no tienen función
                     }
                 }
             });
             
+            // ============================================
             // PRECARGAR IMÁGENES PARA MEJOR EXPERIENCIA
+            // ============================================
+            // Esta técnica carga las imágenes en caché antes de que sean necesarias
+            // para que se muestren instantáneamente al abrir el modal
             window.addEventListener('load', function() {
-                console.log('Precargando imágenes...');
+                console.log('Precargando imágenes de ropa...');
+                
+                // Crear un objeto Image por cada imagen para forzar la precarga
                 imagenesGaleria.forEach(imagen => {
-                    const img = new Image();
-                    img.src = imagen.src;
+                    const img = new Image(); // Crear un nuevo objeto Image
+                    img.src = imagen.src; // Establecer la fuente para que el navegador la cargue
                 });
+                
+                console.log('Precarga de imágenes completada');
             });
             
-            // PREVENIR COMPORTAMIENTO POR DEFECTO EN BOTONES DE NAVEGACIÓN
-            prevBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-            });
-            
-            nextBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-            });
-            
-            console.log('Galería inicializada correctamente');
+            console.log('Galería de ropa inicializada correctamente');
         });
         
-        // Mensaje de error si algo sale mal
+        // ============================================
+        // MANEJO DE ERRORES GLOBALES
+        // ============================================
+        // Capturar y mostrar errores en la consola para facilitar la depuración
         window.addEventListener('error', function(e) {
             console.error('Error en la página:', e.message);
             console.error('En el archivo:', e.filename);

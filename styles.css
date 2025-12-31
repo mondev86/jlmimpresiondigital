@@ -1,5 +1,6 @@
 :root {
   --bg: #fafafa;
+  --head: #c62828;
   --dark: #1a1a1a;
   --brand: #0066cc;
   --brand-hover: #0052a3;
@@ -7,13 +8,19 @@
   --text: #2d3748;
   --muted: #4a5568;
   --border: #e2e8f0;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --radius: 12px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-   --hero-gradient: linear-gradient(135deg, rgba(202, 203, 207, 0.9) 0%, rgba(98, 76, 120, 0.9) 100%);
+  --hero-gradient: linear-gradient(
+    135deg,
+    rgba(202, 203, 207, 0.9) 0%,
+    rgba(98, 76, 120, 0.9) 100%
+  );
+  --muted: (#080808);
 }
-
 
 * {
   box-sizing: border-box;
@@ -23,11 +30,12 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;  /*para ajustar la altura del contenido*/
+  scroll-padding-top: 80px; /*para ajustar la altura del contenido*/
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, sans-serif;
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
@@ -37,7 +45,7 @@ body {
 
 /* Header con menú hamburguesa */
 header {
-  background: var(--dark);
+  background: var(--head);
   color: #fff;
   padding: 0.75rem 1.5rem;
   display: flex;
@@ -56,9 +64,16 @@ header {
 }
 
 .logo img {
-  height: 64px;
+  height: 68px;
   width: auto;
   display: block;
+  transition: transform 0.3s ease-in-out; /* Suaviza el efecto */
+  cursor: pointer; /* Cambia el cursor a una mano */
+}
+
+.logo img:hover {
+  transform: scale(1.1); /* Escala el logo al 120% (acercar) */
+  /* Para disminuir, usa valores menores a 1, ej: scale(0.8); */
 }
 
 /* Empresa CENTRADA */
@@ -126,7 +141,6 @@ main {
   padding: 0 1rem;
 }
 
-
 /* Indicador de scroll */
 .scroll-indicator {
   position: absolute;
@@ -141,7 +155,7 @@ main {
 }
 
 .scroll-indicator::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 8px;
   left: 50%;
@@ -154,8 +168,15 @@ main {
 }
 
 @keyframes scrollAnimation {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
-  50% { transform: translateX(-50%) translateY(10px); opacity: 0.5; }
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+    opacity: 0.5;
+  }
 }
 
 /* Alternativa: Hero dividido en dos columnas */
@@ -189,35 +210,35 @@ main {
     min-height: 500px;
     padding: 3rem 1rem;
   }
-  
+
   .hero h1 {
     font-size: 2.25rem;
   }
-  
+
   .hero p {
     font-size: 1.125rem;
   }
-  
+
   .hero-image-container {
     max-width: 100%;
     margin: 2rem auto 0;
   }
-  
+
   .hero-buttons {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .hero-buttons .btn {
     width: 100%;
     max-width: 300px;
   }
-  
+
   .hero-split {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
+
   .hero-text {
     text-align: center;
   }
@@ -227,15 +248,15 @@ main {
   .hero {
     min-height: 400px;
   }
-  
+
   .hero h1 {
     font-size: 1.875rem;
   }
-  
+
   .hero p {
     font-size: 1rem;
   }
-  
+
   .hero-image-container::before {
     top: 5px;
     left: 5px;
@@ -276,7 +297,7 @@ main {
 }
 
 .btn::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -333,7 +354,7 @@ section h2 {
 }
 
 #servicios h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -8px;
   left: 50%;
@@ -428,26 +449,26 @@ section h2 {
   #servicios {
     padding: 2rem 1rem;
   }
-  
+
   #servicios h2 {
     font-size: 1.8rem;
     margin-bottom: 2rem;
   }
-  
+
   .container {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
   }
-  
+
   .container article {
     padding: 1.2rem;
     min-height: 160px;
   }
-  
+
   .service-image {
     height: 100px;
   }
-  
+
   .container article h3 {
     font-size: 1.1rem;
   }
@@ -547,7 +568,7 @@ button[type="submit"] {
 
 /* Efecto de onda al hacer clic */
 .btn-submit-pro::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -597,14 +618,17 @@ button[type="submit"] {
     max-width: 280px;
   }
 }
-/* Footer mejorado y COMPLETO */
+
+/* ===== FOOTER GENERAL ===== */
 footer {
-  background: var(--dark);
-  color: #fff;
+  background-color: var(--card);
+  color: #080808;
   padding: 3rem 1rem 1rem;
   margin-top: 4rem;
+  text-align: center;
 }
 
+/* ===== GRID PRINCIPAL ===== */
 .footer-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -613,6 +637,7 @@ footer {
   margin: 0 auto 2rem;
 }
 
+/* ===== SECCIONES ===== */
 .footer-section {
   margin-bottom: 1rem;
 }
@@ -627,15 +652,18 @@ footer {
 }
 
 .footer-section h4::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 40px;
   height: 2px;
   background: var(--brand);
 }
 
+
+/* ===== LISTAS ===== */
 .footer-section ul {
   list-style: none;
   padding: 0;
@@ -659,7 +687,16 @@ footer {
   transform: translateX(4px);
 }
 
-/* Estilos específicos para enlaces legales */
+.footer-photo {
+  display: block;
+  max-width: 260px;
+  width: 100%;
+  margin: 1rem auto 2rem;
+  border-radius: 8px;
+}
+
+
+/* ===== ENLACES LEGALES ===== */
 .legal-links {
   display: flex;
   flex-wrap: wrap;
@@ -675,7 +712,7 @@ footer {
 }
 
 .legal-links a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -693,12 +730,14 @@ footer {
   color: #567caa;
 }
 
-/* Estilos para iconos de redes sociales */
+/* ===== ICONOS SOCIALES ===== */
 .social-icons {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
+  width: 100%;
   margin-top: 1.5rem;
-  flex-wrap: wrap;
 }
 
 .social-icon {
@@ -713,94 +752,72 @@ footer {
   text-decoration: none;
   transition: var(--transition);
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* 🔥 IMPORTANTE: permite ver el SVG */
 }
 
+/* Hover background */
 .social-icon::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: var(--brand);
   border-radius: 50%;
   transform: scale(0);
   transition: transform 0.3s ease;
+  z-index: 1; /* 🔥 debajo del SVG */
 }
 
 .social-icon:hover::before {
   transform: scale(1);
 }
 
-.social-icon i,
-.social-icon svg {
-  position: relative;
-  z-index: 1;
-  font-size: 1.25rem;
-  width: 1.25rem;
-  height: 1.25rem;
+/* Icono Instagram (PNG) */
+.social-icon.instagram {
+  background-image: url("img/instagram.png");
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
+/* Evitar que ::after tape el PNG */
+.social-icon.instagram::after {
+  content: none !important;
+}
+
+/* Icono WhatsApp (SVG) */
+.social-icon svg {
+  position: relative;
+  z-index: 2; /* 🔥 encima del hover */
+  width: 30px;
+  height: 30px;
+}
+
+/* Hover elevación */
 .social-icon:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
 }
 
-/* Iconos específicos (colores personalizados si quieres) */
-.social-icon.facebook:hover::before { background: #18f218; }
-.social-icon.twitter:hover::before { background: #1df268; }
-.social-icon.whatsapp:hover::before { background: #28ef6e; }
-.social-icon.instagram:hover::before { 
-  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-}
-.social-icon.linkedin:hover::before { background: #00b52d; }
-.social-icon.youtube:hover::before { background: #ff0000; }
-
-/* Añadir iconos usando pseudo-elementos si no tienes Font Awesome */
-.social-icon::after {
-  font-family: 'Segoe UI Symbol', sans-serif;
+/* Hover colores personalizados */
+.social-icon.whatsapp:hover::before {
+  background: #28ef6e;
 }
 
-.social-icon.facebook::after { content: 'f'; } /* Facebook */
-.social-icon.twitter::after { content: '𝕏'; } /* Twitter/X */
-.social-icon.instagram::after { content: ''; }
-.social-icon.linkedin::after { content: ''; }
-.social-icon.youtube::after { content: '▶'; }
-
-/* Footer bottom con información legal */
-.footer-bottom {
-  text-align: center;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid #2d3748;
-  font-size: 0.875rem;
-  color: #a0aec0;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+.social-icon.instagram:hover::before {
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5851db,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1d
+  );
 }
 
-.legal-info {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 1rem;
-}
 
-.legal-info a {
-  color: #cbd5e0;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.legal-info a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.copyright {
+/* ===== COPYRIGHT ===== */
+copyright {
   margin-top: 0.9rem;
   font-size: 0.8rem;
   color: #718096;
@@ -814,61 +831,72 @@ footer {
     gap: 1rem;
     padding: 1rem;
   }
-  
+
   .empresa {
     order: -1;
     margin: 0;
   }
-  
+
   nav ul {
     justify-content: center;
     gap: 1rem;
   }
-  
+
   .hero h1 {
     font-size: 2.25rem;
   }
-  
+
   .hero p {
     font-size: 1.125rem;
   }
-  
+
   section h2 {
     font-size: 2rem;
   }
-  
+
   .container {
     grid-template-columns: 1fr;
   }
-  
+
   .form-container {
     padding: 1.5rem;
   }
-  
+
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
   }
   
-  .footer-section h4::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
+  .footer-section h4 {
+  text-align: center;
+  position: relative; /* necesario para centrar el ::after */
+}
+
+.footer-section h4::after {
+  content: "";
+  position: absolute; /* necesario */
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--brand);
+}
+
+
   .social-icons {
     justify-content: center;
   }
-  
+
   .legal-links {
     justify-content: center;
   }
-  
+
   .legal-info {
     flex-direction: column;
     gap: 1rem;
   }
 }
-
 
 /* En móviles, asegurar que se vea lo más importante */
 @media (max-width: 768px) {
@@ -876,7 +904,7 @@ footer {
     background-position: 30% center; /* Mover un poco a la izquierda */
     min-height: 70vh;
   }
-  
+
   /* Asegurar que el texto esté legible */
   .hero-content {
     background: rgba(0, 0, 0, 0.4); /* Fondo más oscuro en móviles */
@@ -898,34 +926,36 @@ footer {
     padding: 2rem 1rem;
     min-height: 60vh;
   }
-  
+
   .hero h1 {
     font-size: 2rem;
   }
-  
+
   .hero h1 .highlight {
     font-size: 2.2rem;
   }
-  
+
   .hero p {
     font-size: 1rem;
   }
-  
+
   .btn {
     width: 100%;
     margin: 0.5rem 0;
   }
-  
+
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
+
   .social-icon {
     width: 40px;
     height: 40px;
+    overflow: visible;
   }
-  
+
+
   .btn-submit-pro {
     padding: 0.8rem 1.5rem;
     max-width: 100%;
@@ -949,10 +979,18 @@ footer {
   opacity: 0;
 }
 
-.container article:nth-child(1) { animation-delay: 0.1s; }
-.container article:nth-child(2) { animation-delay: 0.2s; }
-.container article:nth-child(3) { animation-delay: 0.3s; }
-.container article:nth-child(4) { animation-delay: 0.4s; }
+.container article:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.container article:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.container article:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.container article:nth-child(4) {
+  animation-delay: 0.4s;
+}
 
 /* Mejoras de accesibilidad */
 @media (prefers-reduced-motion: reduce) {
@@ -961,7 +999,7 @@ footer {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   html {
     scroll-behavior: auto;
   }
@@ -979,13 +1017,18 @@ footer {
 }
 
 .loading::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   animation: loading 1.5s infinite;
 }
 
@@ -993,8 +1036,7 @@ footer {
   100% {
     left: 100%;
   }
-} 
-
+}
 
 /* ====================================== */
 /* RESPONSIVE - CORREGIDO Y OPTIMIZADO */
@@ -1006,12 +1048,12 @@ footer {
     padding: 0.75rem 1rem;
     position: relative;
   }
-  
+
   /* Ocultar nav desktop */
   .nav-menu {
     display: none !important;
   }
-  
+
   /* Mostrar hamburguesa */
   .menu-toggle {
     display: flex !important;
@@ -1022,7 +1064,7 @@ footer {
     font-size: 1.8rem;
     margin-left: auto; /* Empujar a la derecha */
   }
-  
+
   /* Empresa centrada */
   .empresa {
     font-size: 1.2rem;
@@ -1036,11 +1078,11 @@ footer {
     margin: 0;
     padding: 0;
   }
-  
+
   .logo {
     flex: 0 0 70px;
   }
-  
+
   .logo img {
     height: 45px;
     width: auto;
@@ -1051,20 +1093,20 @@ footer {
 /* 2. TABLETS ESPECÍFICAS */
 /* iPad Air (820x1180) */
 @media (width: 820px) and (height: 1180px),
-       (width: 768px) and (height: 1024px) {
+  (width: 768px) and (height: 1024px) {
   header {
     min-height: 80px;
     align-items: center !important; /* Centrar verticalmente */
   }
-  
+
   .logo {
     align-self: center !important;
   }
-  
+
   .logo img {
     height: 50px;
   }
-  
+
   .empresa {
     font-size: 1.3rem;
   }
@@ -1075,7 +1117,7 @@ footer {
   .empresa {
     font-size: 1.4rem;
   }
-  
+
   .menu-toggle {
     font-size: 2rem;
     width: 48px;
@@ -1089,27 +1131,27 @@ footer {
     padding: 0.5rem 1rem;
     min-height: 70px;
   }
-  
+
   .logo {
     flex: 0 0 60px;
   }
-  
+
   .logo img {
     height: 42px;
     margin-top: 0 !important; /* IMPORTANTE: quitar margin-top */
   }
-  
+
   .empresa {
     font-size: 1.1rem;
     max-width: calc(100% - 120px); /* 60px logo + 60px hamburguesa */
   }
-  
+
   .menu-toggle {
     width: 40px;
     height: 40px;
     font-size: 1.6rem;
   }
-  
+
   /* Menú móvil */
   .mobile-nav {
     width: 250px;
@@ -1122,26 +1164,26 @@ footer {
   header {
     padding: 0.5rem 0.75rem;
   }
-  
+
   .logo {
     flex: 0 0 55px;
   }
-  
+
   .logo img {
     height: 37px;
   }
-  
+
   .empresa {
     font-size: 1rem;
     max-width: calc(100% - 110px);
   }
-  
+
   .menu-toggle {
     width: 36px;
     height: 36px;
     font-size: 1.5rem;
   }
-  
+
   .mobile-nav {
     width: 220px;
   }
@@ -1153,16 +1195,16 @@ footer {
     padding: 0.75rem 1.25rem;
     min-height: 80px;
   }
-  
+
   .logo img {
     height: 52px;
   }
-  
+
   .empresa {
     font-size: 1.4rem;
     max-width: calc(100% - 160px);
   }
-  
+
   .menu-toggle {
     font-size: 2rem;
     width: 52px;
@@ -1176,15 +1218,15 @@ footer {
     min-height: 60px;
     padding: 0.5rem 1rem;
   }
-  
+
   .logo img {
     height: 37px;
   }
-  
+
   .empresa {
     font-size: 1.1rem;
   }
-  
+
   .mobile-nav {
     padding-top: 4rem;
     max-height: 80vh;
@@ -1198,15 +1240,15 @@ footer {
   .menu-overlay {
     display: none !important;
   }
-  
+
   .nav-menu {
     display: block !important;
   }
-  
+
   .menu-toggle {
     display: none !important;
   }
-  
+
   .empresa {
     position: absolute;
     left: 50%;
@@ -1281,15 +1323,15 @@ footer {
     min-height: 70vh;
     padding: 3rem 1.5rem;
   }
-  
+
   .hero h1 {
     font-size: 2.5rem;
   }
-  
+
   .hero h1 .highlight {
     font-size: 2.8rem;
   }
-  
+
   .hero p {
     font-size: 1.2rem;
   }
@@ -1300,19 +1342,19 @@ footer {
     min-height: 60vh;
     padding: 2rem 1rem;
   }
-  
+
   .hero h1 {
     font-size: 2rem;
   }
-  
+
   .hero h1 .highlight {
     font-size: 2.2rem;
   }
-  
+
   .hero p {
     font-size: 1.1rem;
   }
-  
+
   .hero-btn {
     padding: 0.9rem 2rem;
     font-size: 1rem;
@@ -1339,8 +1381,14 @@ header {
   z-index: 1;
 }
 
-.logo, .menu-toggle {
+.logo,
+.menu-toggle {
   position: relative;
   z-index: 2;
 }
 
+@media (max-width: 480px) {
+  .footer-photo {
+    max-width: 90%;
+  }
+}

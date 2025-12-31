@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería - Grafismo para Ferias | JLM Impresión Digital</title>
+    <title>Galería - Grafismo para Ferias | Impresión Digital JLM</title>
     <style>
         /* ESTILOS GENERALES */
         * {
@@ -18,6 +18,8 @@
             color: #333;
             background-color: #f9f9f9;
         }
+        
+    
 
         header {
             background: #2c3e50;
@@ -136,7 +138,7 @@
         /* GRID DE IMÁGENES DENTRO DE CADA CARD */
         .galeria-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-top: 15px;
         }
@@ -404,7 +406,7 @@
                     <span class="toggle-icon">+</span>
                 </div>
                 <!-- GIF PRINCIPAL - también clickeable -->
-                <img src="./img/cartonplumavideo.gif" alt="Animación de montaje en cartón pluma" class="servicio-main-image" loading="lazy" data-index="0">
+                <img src="./img/cartonplumault.jpg" alt="Animación de montaje en cartón pluma" class="servicio-main-image" loading="lazy" data-index="0">
                 
                 <div class="servicio-content" id="carton-pluma">
                     <div class="galeria-grid">
@@ -414,9 +416,9 @@
                         <div class="galeria-item" data-index="2">
                             <img src="./img/feria-09.jpg" alt="Señalética en cartón pluma" loading="lazy">
                         </div>
-                        <div class="galeria-item" data-index="3">
-                            <img src="./img/feria-05.jpg" alt="Expositor en cartón pluma" loading="lazy">
-                        </div>
+                        <!--div class="galeria-item" data-index="3">
+                            <img src="./imgferia-05.jpg" alt="Expositor en cartón pluma" loading="lazy">
+                        </div-->
                     </div>
                 </div>
             </div>
@@ -428,7 +430,7 @@
                     <span class="toggle-icon">+</span>
                 </div>
                 <!-- GIF PRINCIPAL - también clickeable -->
-                <img src="./img/vinilovideo.gif" alt="Animación de aplicación de vinilo" class="servicio-main-image" loading="lazy" data-index="4">
+                <img src="./img/vinilult.jpg" alt="Animación de aplicación de vinilo" class="servicio-main-image" loading="lazy" data-index="4">
                 
                 <div class="servicio-content" id="vinilo">
                     <div class="galeria-grid">
@@ -439,9 +441,9 @@
                             <img src="./img/vinilo-02.jpg" alt="Rotulación vehicular" loading="lazy">
                         </div>
                         
-                         <div class="galeria-item" data-index="7">
+                         <!--div class="galeria-item" data-index="7">
                             <img src="./img/vinilamarillo.jpg" alt="vinilo" loading="lazy">
-                        </div>
+                        </div-->    
                         
                     </div>
                 </div>
@@ -454,7 +456,7 @@
                     <span class="toggle-icon">+</span>
                 </div>
                 <!-- GIF PRINCIPAL - también clickeable -->
-                <img src="./img/trussgif.gif" alt="Animación de montaje de estructura truss" class="servicio-main-image" loading="lazy" data-index="8">
+                <img src="./img/escenario.jpg" alt="Animación de montaje de estructura truss" class="servicio-main-image" loading="lazy" data-index="8">
                 
                 <div class="servicio-content" id="truss">
                     <div class="galeria-grid">
@@ -465,9 +467,9 @@
                             <img src="./img/truss1.jpg" alt="Stand modular con truss" loading="lazy">
                         </div>
                         
-                        <div class="galeria-item" data-index="11">
+                        <!--div class="galeria-item" data-index="11">
                             <img src="./img/trussjlm.jpg" alt="Stand modular con truss" loading="lazy">
-                        </div>
+                        </div-->
                     </div>
                 </div>
             </div>
@@ -499,6 +501,7 @@
     <footer>
         <p>&copy; 2025 Impresión Digital JLM — Zaragoza</p>
         <p>Contacto: produccion@jlmimpresiondigital.com | Tel: 614-299-302</p>
+         <a href="index.html#servicios" class="back-btn">⬅️</a>
     </footer>
 
     <!-- MODAL PARA EXPANDIR IMÁGENES - VERSIÓN SIMPLIFICADA -->
@@ -519,7 +522,7 @@
         const imagenesGaleria = [
             // Cartón Pluma - 4 imágenes
             { 
-                src: './img/cartonplumavideo.gif', 
+                src: './img/cartonplumault.jpg', 
                 alt: 'Animación de montaje en cartón pluma', 
                 caption: ''
             },
@@ -541,7 +544,7 @@
 
             // Vinilo - 3 imágenes
             { 
-                src: './img/vinilovideo.gif', 
+                src: './img/vinilult.jpg', 
                 alt: 'Animación de aplicación de vinilo', 
                 caption: ''
             },
@@ -563,7 +566,7 @@
 
             // Truss y Escenarios - 3 imágenes
             { 
-                src: './img/trussgif.gif', 
+                src: './img/escenario.jpg', 
                 alt: 'Animación de montaje de estructura truss', 
                 caption: ''
             },
@@ -578,7 +581,7 @@
                 caption: ''
             },
             { 
-                src: './img/trussjlm.jpg', 
+                src: './imgtrussjlm.jpg', 
                 alt: 'Stand modular para feria con truss', 
                 caption: ''
             }

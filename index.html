@@ -20,7 +20,7 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="JImpresión Digital JLM en Zaragoza">
+  <meta property="og:title" content="Impresión Digital JLM en Zaragoza">
   <meta property="og:description" content=" Impresion, vinilos, rotulación y papelería personalizada para negocios.">
   <meta property="og:url" content="https://tu-dominio.com/">
   <meta property="og:image" content="https://tu-dominio.com/assets/og-image.jpg">
@@ -31,15 +31,15 @@
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "JLM Impresión Digital",
+    "name": "Impresión Digital JLM",
     "image": "https://tu-dominio.com/assets/og-image.jpg",
     "url": "https://tu-dominio.com/",
     "telephone": "+614299302",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Calle Ejemplo 123",
+      "streetAddress": "Calle Coronna de aragon 28, local",
       "addressLocality": "Zaragoza",
-      "postalCode": "50001",
+      "postalCode": "50009",
       "addressCountry": "ES"
     },
     "openingHours": "Mo-Fr 09:00-18:00",
@@ -50,12 +50,13 @@
  
 </head>
 <body>
+
 <header>
   <div class="logo">
-    <img src="./img/logojlm.jpg" alt="Logo JLM">
+    <img src="./img/logotranpjlm.png" alt="Logo JLM">
   </div>
   
-  <div class="empresa">Impresión Digital JLM</div>
+  <div class="empresa">JLM Impresión Digital</div>
   
   <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
     <span class="hamburger">≡</span>
@@ -113,9 +114,9 @@
     
     <article>
       <div class="service-image">
-        <img src="./img/catalogolibrosfolletos_1.jpg" alt="Revistas corporativas - Diseño editorial" loading="lazy">
+        <img src="./img/cajas.jpg" alt="cajas - Diseño editorial" loading="lazy">
       </div>
-      <a href="./img/catalogolibrosfolletos_2.jpg"><h3>Packing</h3></a>
+      <a href="packaging.html"><h3>Packaging/Embalaje</h3></a>
       <p></p>
     </article>
     
@@ -139,7 +140,7 @@
       <div class="service-image">
         <img src="./img/carteleria muestra02.png" alt="Otros servicios de impresión" loading="lazy">
       </div>
-      <a href="./img/carteleria muestra02.png"><h3>Otros</h3></a>
+      <a href="otros.html"><h3>Otros</h3></a>
       <p></p>
     </article>
   </div>
@@ -147,25 +148,58 @@
 
     <section id="contacto">
       <h2>Contacto</h2>
-      <p><strong>Teléfono:</strong> <a href="tel:+34123456789">+34 976 564 129</a></p>
-      <p><strong>Email:</strong> <a href="produccion@jlmimpresiondigital.es">tienda@jlmimpresiondigital.es</a></p>
-      <form>
-        <label for="nombre">Nombre</label>
-        <input id="nombre" name="nombre" type="text" required>
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" required></textarea>
-       <button type="submit" class="btn-submit-pro">
-  Enviar Mensaje
-</button>
-      </form
+      <p><strong>Teléfono:</strong> <a href="tel:+34123456789">+34 614 299 302</a></p> 
+      <a href="mailto:produccion@jlmimpresiondigital.es?subject=Consulta%20desde%20la%20web&body=Hola,%20quisiera%20información%20sobre...">
+      produccion@jlmimpresiondigital.es
+      </a>
 
-       <footer>
+      <br>
+<form id="contacto-form">
+    <!-- Honeypot (protección anti‑bots) -->
+    <div style="display:none;">
+        <input type="text" id="empresa" name="empresa">
+    </div>
+
+    <div class="form-group">
+        <input id="nombre" name="nombre" type="text" required maxlength="100"
+               pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+" placeholder=" ">
+        <label for="nombre">Nombre</label>
+    </div>
+
+    <div class="form-group">
+        <input id="email" name="email" type="email" required placeholder=" ">
+        <label for="email">Email</label>
+    </div>
+
+    <div class="form-group">
+        <textarea id="mensaje" name="mensaje" required minlength="10" maxlength="5000" placeholder=" "></textarea>
+        <label for="mensaje">Mensaje</label>
+    </div>
+
+    <button type="submit" class="btn-submit-pro">Enviar Mensaje</button>
+</form>
+
+<footer>
   <div class="footer-container">
+
+    <!-- Sección agrupada: Nuestra Empresa + Legal -->
     <div class="footer-section">
       <h4>Nuestra Empresa</h4>
-      <p>JLM Impresion Digital es una empresa dedicada a brindar servicios de publicidad. Nuestra misión es ofrecer servicios de calidad a nuestros clientes dandole diseños y montajes de calidad.</p>
+      <p>
+        JLM Impresión Digital somos una empresa dedicada a brindar servicios de publicidad.
+        Nuestra misión es ofrecer servicios de calidad a nuestros clientes dándoles diseños
+        y montajes de calidad.
+      </p>
+
+      <h4 style="margin-top: 2rem;">Legal</h4>
+      <div class="legal-links">
+        <a href="privacidad.html">Política de Privacidad</a>
+        <a href="aviso-legal.html">Aviso Legal</a>
+        <a href="cookies.html">Política de Cookies</a>
+      </div>
     </div>
-    
+
+    <!-- Sección: Enlaces Rápidos -->
     <div class="footer-section">
       <h4>Enlaces Rápidos</h4>
       <ul>
@@ -174,52 +208,98 @@
         <li><a href="nosotros.html">Nosotros</a></li>
       </ul>
     </div>
-    
+
+    <!-- Sección: Contacto + Imagen + Redes -->
     <div class="footer-section">
       <h4>Contacto</h4>
       <ul>
-        <li>📞 +34 976 564 129</li>
-        <li>✉️ tienda@jlmimpresiondigital.es</li>
-        <li>📍 Corona de Aragon 28, local 50009 Zaragoza</li>
+        <li>📞 +34 614 299 302</li>
+        <li>
+          ✉️
+          <a href="mailto:produccion@jlmimpresiondigital.es?subject=Consulta%20desde%20la%20web&body=Hola,%20quisiera%20información%20sobre...">
+            produccion@jlmimpresiondigital.es
+          </a>
+        </li>
+        <li>📍 Corona de Aragón 28, local 50009 Zaragoza</li>
       </ul>
-      
+
+      <!-- Foto del local -->
+     <img src="img/trussjlm.jpg"
+     alt="Foto del local"
+     class="footer-photo">
+
+
       <h4 style="margin-top: 1.5rem;">Síguenos</h4>
+
       <div class="social-icons">
-        
-        <a href="https://www.instagram.com/jlm20_23/" class="social-icon instagram" aria-label="Instagram">
-    <svg class="social-svg" viewBox="0 0 24 24" width="22" height="22">
-      <path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-    </svg>
-  </a>
-        
-        <a href="https://wa.me/34600112233?text=Hola%20JLM%20Impresión%20Digital,%20me%20interesan%20sus%20servicios" 
-   class="social-icon whatsapp" 
-   aria-label="WhatsApp"
-   target="_blank" 
-   rel="noopener">
-  <svg class="social-svg" viewBox="0 0 24 24" width="35" height="35">
-    <path fill="#25D366" d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.264 8.264 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24c2.2 0 4.27.86 5.82 2.42a8.183 8.183 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81c-.23-.08-.39-.12-.56.12c-.17.25-.64.81-.78.97c-.14.17-.29.19-.54.06c-.25-.12-1.05-.39-1.99-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.14-.25-.02-.38.11-.51c.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31c-.22.25-.86.85-.86 2.07c0 1.22.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74c.59.26 1.05.41 1.41.52c.59.19 1.13.16 1.56.1c.48-.07 1.47-.6 1.67-1.18c.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28z"/>
-  </svg>
-</a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/jlm20_23/"
+           class="social-icon instagram"
+           aria-label="Instagram"
+           target="_blank"
+           rel="noopener">
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/+34614299302?text=Hola%20JLM%20Impresión%20Digital,%20me%20interesan%20sus%20servicios"
+           class="social-icon whatsapp"
+           aria-label="WhatsApp"
+           target="_blank"
+           rel="noopener">
+          <svg class="social-svg" viewBox="0 0 24 24" width="35" height="35">
+          <path fill="#25D366" d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.264 8.264 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24c2.2 0 4.27.86 5.82 2.42a8.183 8.183 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81c-.23-.08-.39-.12-.56.12c-.17.25-.64.81-.78.97c-.14.17-.29.19-.54.06c-.25-.12-1.05-.39-1.99-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.14-.25-.02-.38.11-.51c.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31c-.22.25-.86.85-.86 2.07c0 1.22.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74c.59.26 1.05.41 1.41.52c.59.19 1.13.16 1.56.1c.48-.07 1.47-.6 1.67-1.18c.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28z"/>
+          </svg>
+
+
+        </a>
       </div>
     </div>
-    
-    <div class="footer-section">
-      <h4>Legal</h4>
-      <div class="legal-links">
-        <a href="privacidad.html">Política de Privacidad</a>
-        <a href="aviso-legal.html">Aviso Legal</a>
-        <a href="cookies.html">Política de Cookies</a>
-      </div>
-    </div>
+
   </div>
-  
-    <div class="copyright">
-     <p>&copy; 2025 JLM Impresión Digital — Zaragoza</p>
-    </div>
+
+  <!-- Copyright centrado -->
+  <div class="copyright">
+    <p>&copy; 2025 JLM Impresión Digital — Zaragoza</p>
   </div>
 </footer>
+
+
+<script>
+document.getElementById('contacto-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Protección anti‑bots (honeypot)
+    if (document.getElementById('empresa').value !== "") {
+        return; // Bot detectado, no hacemos nada
+    }
+
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+
+    // Validación extra
+    if (nombre.length < 3) {
+        alert("El nombre es demasiado corto");
+        return;
+    }
+
+    if (mensaje.length < 10) {
+        alert("El mensaje es demasiado corto");
+        return;
+    }
+
+    // Construir mailto
+    const mailto = `mailto:produccion@jlmimpresiondigital.es
+?subject=Mensaje de ${encodeURIComponent(nombre)}
+&body=Nombre: ${encodeURIComponent(nombre)}
+%0AEmail: ${encodeURIComponent(email)}
+%0AMensaje:%0A${encodeURIComponent(mensaje)}`;
+
+    // Abrir cliente de correo
+    window.location.href = mailto;
+});
+</script>
+
 <script src="script.js"></script>
-<script src="galeria-lightbox.js"></script>
-</body
+</body>
 </html>

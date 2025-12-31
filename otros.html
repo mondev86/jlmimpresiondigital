@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seccion Otros | Impresión Digital JLM</title>
+    <style>
+        /* ============================================
+           ESTILOS GENERALES PARA LA PÁGINA
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+        }
+
+        /* Botón para volver atrás */
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Contenedor principal */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cabecera de la galería */
+        .galeria-hero {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+        }
+
+        .galeria-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .galeria-hero p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        /* ============================================
+           ESTILOS PARA LA GALERÍA DE IMÁGENES
+           ============================================ */
+        .galeria-container {
+            margin-bottom: 60px;
+        }
+
+        /* Grid para organizar las imágenes */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        /* Cada ítem de la galería */
+        .galeria-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Efecto hover para los ítems */
+        .galeria-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Imágenes dentro de los ítems */
+        .galeria-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Texto debajo de cada imagen (vacío en tu caso) */
+        .galeria-caption {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #2c3e50;
+            background: white;
+        }
+
+        /* ============================================
+           ESTILOS PARA LA NUEVA SECCIÓN "OTROS"
+           ============================================ */
+        .otros-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+
+        .otros-container h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .otros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* Estilos para videos - MEJORADOS */
+        .video-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Contenedor de video con estados */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-info {
+            padding: 20px;
+            background: white;
+        }
+
+        .video-info h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .video-info p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Información adicional del video */
+        .video-meta {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #888;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Botón de descarga de video */
+        .video-download {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 12px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+
+        .video-download:hover {
+            background: #2980b9;
+        }
+
+        /* Indicador de carga para videos */
+        .video-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 2;
+        }
+
+        /* Mensaje de error para videos */
+        .video-error {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff6b6b;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.8);
+            border-radius: 5px;
+            z-index: 2;
+            width: 80%;
+        }
+
+        .video-error a {
+            color: #3498db;
+            text-decoration: underline;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        /* Estilos para imágenes en sección otros */
+        .otros-imagen-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .otros-imagen-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .otros-imagen-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .otros-imagen-info {
+            padding: 20px;
+            background: white;
+        }
+
+        .otros-imagen-info h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .otros-imagen-info p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           SECCIÓN DE INFORMACIÓN DEL SERVICIO
+           ============================================ */
+        .galeria-info {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .galeria-info h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        /* Contenedor de dos columnas para la información */
+        .info-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        /* Estilos para textos y listas */
+        .info-text h3, .info-contact h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .info-text ul {
+            list-style-position: inside;
+            padding-left: 15px;
+        }
+
+        .info-text li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+
+        .info-contact p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Botón para contactar */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-primary {
+            background: #3498db;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        /* ============================================
+           ESTILOS PARA EL FOOTER
+           ============================================ */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* ============================================
+           ESTILOS PARA EL MODAL/LIGHTBOX
+           VERSIÓN SIMPLIFICADA SIN CARRUSEL
+           ============================================ */
+        
+        /* Fondo oscuro del modal */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); /* Fondo oscuro semitransparente */
+            animation: fadeIn 0.3s ease;
+            overflow: hidden;
+        }
+
+        /* Contenedor del contenido del modal */
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 100%;
+            max-width: 1200px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Imagen dentro del modal */
+        .modal-image {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain; /* Mantiene la proporción de la imagen */
+            margin: auto;
+            display: block;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Botón para cerrar el modal (X) */
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #fff;
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001; /* Por encima de todo */
+            transition: color 0.3s;
+            background: rgba(0, 0, 0, 0.5);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%; /* Forma circular */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        /* Efecto hover para el botón de cerrar */
+        .close-modal:hover {
+            color: #ddd;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Información de la imagen en el modal */
+        .modal-info {
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        }
+
+        /* Texto descriptivo de la imagen */
+        #imageCaption {
+            font-size: 22px;
+            margin: 0;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* Animación de entrada del modal */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Cuando el modal está abierto, se deshabilita el scroll del body */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* ============================================
+           ESTILOS RESPONSIVE PARA DISPOSITIVOS MÓVILES
+           ============================================ */
+        @media (max-width: 768px) {
+            .info-content {
+                grid-template-columns: 1fr; /* Una columna en móviles */
+            }
+            
+            .otros-grid {
+                grid-template-columns: 1fr; /* Una columna en móviles */
+                gap: 20px;
+            }
+            
+            .otros-container {
+                padding: 25px;
+            }
+            
+            /* Ajustes para el botón de cerrar en móviles */
+            .close-modal {
+                top: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 35px;
+            }
+            
+            /* Ajuste del tamaño de la imagen en el modal para móviles */
+            .modal-image {
+                max-width: 95%;
+                max-height: 70vh;
+            }
+            
+            #imageCaption {
+                font-size: 18px;
+            }
+            
+            .video-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* En pantallas muy pequeñas, una sola columna */
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Ajuste del tamaño de la imagen en el modal para pantallas muy pequeñas */
+            .modal-image {
+                max-height: 65vh;
+            }
+            
+            /* Título más pequeño en móviles */
+            .galeria-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .otros-container h2 {
+                font-size: 1.5rem;
+            }
+            
+            .video-container {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         ENCABEZADO CON BOTÓN PARA VOLVER
+         ============================================ -->
+    <header>
+        <a href="index.html#servicios" class="back-btn">← Volver a Servicios</a>
+    </header>
+
+    <!-- ============================================
+         CONTENIDO PRINCIPAL DE LA PÁGINA
+         ============================================ -->
+    <main class="galeria-page">
+        <!-- Cabecera con título y descripción -->
+        <section class="galeria-hero">
+            <h1>Seccion Otros</h1>
+            <p>Ofrecemos variedades de trabajos en diferentes materiales</p>
+        </section>
+
+        <!-- Contenedor de la galería de imágenes -->
+        <section class="galeria-container">
+            <div class="galeria-grid">
+                <!-- Imagen 1 - Índice 0 -->
+                <div class="galeria-item" data-index="0">
+                    <img src="./img/packaging-01.jpg" alt="Caja personalizada para producto premium" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+                
+                <!-- Imagen 2 - Índice 1 -->
+                <div class="galeria-item" data-index="1">
+                    <img src="./img/packaging-02.jpg" alt="Bolsas ecológicas personalizadas" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+                
+                <!-- Imagen 3 - Índice 2 -->
+                <div class="galeria-item" data-index="2">
+                    <img src="./img/packaging-03.jpg" alt="Tubos de cartón para posters" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+                
+                <!-- Imagen 4 - Índice 3 -->
+                <div class="galeria-item" data-index="3">
+                    <img src="./img/packaging-04.jpg" alt="Cajas de regalo personalizadas" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+                
+                <!-- Imagen 5 - Índice 4 -->
+                <div class="galeria-item" data-index="4">
+                    <img src="./img/packaging-05.jpg" alt="Embalaje para envíos" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+                
+                <!-- Imagen 6 - Índice 5 -->
+                <div class="galeria-item" data-index="5">
+                    <img src="./img/packaging-06.jpg" alt="Sobres corporativos personalizados" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+                
+                <!-- Imagen 7 - Índice 6 -->
+                <div class="galeria-item" data-index="6">
+                    <img src="./img/packaging-07.jpg" alt="Packaging para alimentos" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+                
+                <!-- Imagen 8 - Índice 7 -->
+                <div class="galeria-item" data-index="7">
+                    <img src="./img/packaging-08.jpg" alt="Cajas plegables para retail" loading="lazy">
+                    <div class="galeria-caption"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUEVA SECCIÓN: OTROS (VIDEOS E IMÁGENES) - MEJORADA -->
+        <section class="otros-container">
+            <h2>Ologramas y Pantallas Digitales</h2>
+            
+            <div class="otros-grid">
+                <!-- Video 1 - MEJORADO PARA MÁXIMA COMPATIBILIDAD -->
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls preload="metadata" poster="./img/tren.png"
+                               onerror="videoError(this)" onloadstart="videoLoading(this)">
+                            <!-- Formato principal - MP4 H.264 (máxima compatibilidad) -->
+                            <source src="./videos/ologramtren.mp4" type="video/mp4">
+                            
+                            <!-- Formato alternativo - WebM para Chrome/Firefox -->
+                            <source src="./videos/ologramtren.webm" type="video/webm">
+                            
+                            <!-- Formato alternativo - OGG para navegadores antiguos -->
+                            <source src="./videos/ologramtren.ogv" type="video/ogg">
+                            
+                        </video>
+                        <div class="video-loading" style="display: none;">Cargando video...</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Olograma en set improvisado</h3>
+                        <p>Proceso de pruebas en escenerio.</p>
+                        <div class="video-meta">
+                            <span>Tamaño: 3MB</span>
+                            <span>Duración: 0:10 seg</span>
+                            <span>Formato: MP4/WebM/OGG</span>
+                        </div>
+                        <a href="./videos/ologramtren.mp4" download class="video-download">📥 Descargar video</a>
+                    </div>
+                </div>
+                
+                <!-- Video 2 - MEJORADO PARA MÁXIMA COMPATIBILIDAD -->
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls preload="metadata" poster="./img/corazon.jpg"
+                               onerror="videoError(this)" onloadstart="videoLoading(this)">
+                            <source src="./videos/ologramcor.mp4" type="video/mp4">
+                            <source src="./videos/ologramcor.webm" type="video/webm">
+                            <source src="./videos/ologramcor.ogv" type="video/ogg">
+                            
+                            <div class="video-error" style="display: none;">
+                                <p>❌ No se puede reproducir el video</p>
+                                <p><a href="./videos/ologramcor.mp4" download class="video-download">Descargar video MP4</a></p>
+                            </div>
+                        </video>
+                        <div class="video-loading" style="display: none;">Cargando video...</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Ferias</h3>
+                        <p>Vea nuestros ambientes de montaje.</p>
+                        <div class="video-meta">
+                            <span>Tamaño: 3MB</span>
+                            <span>Duración: 0:12 seg</span>
+                            <span>Formato: MP4/WebM/OGG</span>
+                        </div>
+                        <a href="./videos/ologramcor.mp4" download class="video-download">📥 Descargar video</a>
+                    </div>
+                </div>
+                
+                <!-- Video 3 - MEJORADO PARA MÁXIMA COMPATIBILIDAD -->
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls preload="metadata" poster="./img/turbo.jpg"
+                               onerror="videoError(this)" onloadstart="videoLoading(this)">
+                            <source src="./videos/ologramvarios.mp4" type="video/mp4">
+                            <source src="./videos/ologramvarios.webm" type="video/webm">
+                            <source src="./videos/ologramvarios.ogv" type="video/ogg">
+                            
+                            <div class="video-error" style="display: none;">
+                                <p>❌ No se puede reproducir el video</p>
+                                <p><a href="./videos/ologramvarios.mp4" download class="video-download">Descargar video MP4</a></p>
+                            </div>
+                        </video>
+                        <div class="video-loading" style="display: none;">Cargando video...</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Mezcla de ologramas</h3>
+                        <p>Mas demostraciones y secuencias</p>
+                        <div class="video-meta">
+                            <span>Tamaño: 3MB</span>
+                            <span>Duración: 0:12 seg</span>
+                            <span>Formato: MP4/WebM/OGG</span>
+                        </div>
+                        <a href="./videos/ologramvarios.mp4" download class="video-download">📥 Descargar video</a>
+                    </div>
+                </div>
+                
+                <!-- Nota: Las imágenes de la sección otros están comentadas en tu HTML original -->
+                <!-- Si las necesitas, descomenta los divs y ajusta los índices -->
+                
+            </div>
+        </section>
+
+        <!-- Sección de información sobre el servicio -->
+        <section class="galeria-info">
+            <h2>Detalles del servicio</h2>
+            <div class="info-content">
+                <div class="info-text">
+                    <h3>¿Qué ofrecemos?</h3>
+                    <ul>
+                       <li><strong>Manteles personalizados:</strong> Diseño e impresión de manteles para eventos, restaurantes y hoteles</li>
+                        <li><strong>Papel térmico para tickets:</strong> Rollos y tickets térmicos para comercios y equipos de punto de venta</li>
+                        <li><strong>Etiquetas adhesivas:</strong> Etiquetas personalizadas para productos, precios y códigos de barras</li>
+                        <li><strong>Material publicitario:</strong> Banderines, pósters y displays para promociones</li>
+                        <li><strong>Invitaciones y tarjetas:</strong> Para eventos, bodas, comuniones y celebraciones especiales</li>
+                        <li><strong>Material para ferias:</strong> Roll-ups, vinilos y gráfica para stands y exposiciones</li>
+                    </ul>
+                </div>
+                
+                <div class="info-contact">
+                    <h3>¿Necesitas packaging personalizado?</h3>
+                    <p>Contáctanos para desarrollar la solución de empaquetado perfecta para tus productos.</p>
+                    <a href="index.html#contacto" class="btn btn-primary">Solicitar presupuesto</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================
+         FOOTER DE LA PÁGINA
+         ============================================ -->
+    <footer>
+        <p>&copy; 2025 Impresión Digital JLM — Zaragoza</p>
+        <p>Contacto: produccion@jlmimpresiondigital.com | Tel: 614 - 299 - 302</p>
+    </footer>
+
+    <!-- ============================================
+         MODAL PARA EXPANDIR IMÁGENES
+         VERSIÓN SIMPLIFICADA SIN BOTONES DE NAVEGACIÓN
+         ============================================ -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <!-- Aquí se carga dinámicamente la imagen seleccionada -->
+            <img class="modal-image" id="expandedImage" src="" alt="">
+            <div class="modal-info">
+                <!-- Aquí se muestra el texto descriptivo de la imagen -->
+                <p id="imageCaption"></p>
+            </div>
+        </div>
+        <!-- NOTA: Se han eliminado los botones de navegación (prev/next) y el contador -->
+    </div>
+
+    <!-- ============================================
+         SCRIPT JAVASCRIPT - VERSIÓN MEJORADA
+         ============================================ -->
+    <script>
+        // ============================================
+        // CONFIGURACIÓN DE LAS IMÁGENES DE LA GALERÍA
+        // ============================================
+        const imagenesGaleria = [
+            {
+                src: './img/packaging-01.jpg',
+                alt: 'Caja personalizada para producto premium',
+                caption: 'Caja personalizada para producto premium'
+            },
+            {
+                src: './img/packaging-02.jpg',
+                alt: 'Bolsas ecológicas personalizadas',
+                caption: 'Bolsas ecológicas personalizadas'
+            },
+            {
+                src: './img/packaging-03.jpg',
+                alt: 'Tubos de cartón para posters',
+                caption: 'Tubos de cartón para posters'
+            },
+            {
+                src: './img/packaging-04.jpg',
+                alt: 'Cajas de regalo personalizadas',
+                caption: 'Cajas de regalo personalizadas'
+            },
+            {
+                src: './img/packaging-05.jpg',
+                alt: 'Embalaje para envíos',
+                caption: 'Embalaje para envíos'
+            },
+            {
+                src: './img/packaging-06.jpg',
+                alt: 'Sobres corporativos personalizados',
+                caption: 'Sobres corporativos personalizados'
+            },
+            {
+                src: './img/packaging-07.jpg',
+                alt: 'Packaging para alimentos',
+                caption: 'Packaging para alimentos'
+            },
+            {
+                src: './img/packaging-08.jpg',
+                alt: 'Cajas plegables para retail',
+                caption: 'Cajas plegables para retail'
+            }
+            // Nota: Las imágenes de la sección "otros" están comentadas
+            // Si las necesitas, añádelas aquí con índices 8, 9, 10
+        ];
+
+        // ============================================
+        // FUNCIONES PARA MANEJAR VIDEOS
+        // ============================================
+        
+        // Función para mostrar estado de carga
+        function videoLoading(videoElement) {
+            const container = videoElement.closest('.video-container');
+            const loading = container.querySelector('.video-loading');
+            const error = container.querySelector('.video-error');
+            
+            if (loading) loading.style.display = 'block';
+            if (error) error.style.display = 'none';
+            
+            console.log('Cargando video:', videoElement.currentSrc || videoElement.src);
+        }
+
+        // Función para manejar errores de video
+        function videoError(videoElement) {
+            console.error('Error al cargar el video:', videoElement.currentSrc || videoElement.src);
+            
+            const container = videoElement.closest('.video-container');
+            const loading = container.querySelector('.video-loading');
+            const error = container.querySelector('.video-error');
+            
+            if (loading) loading.style.display = 'none';
+            if (error) error.style.display = 'block';
+            
+            // Intentar cargar automáticamente el siguiente formato
+            setTimeout(() => {
+                const sources = videoElement.querySelectorAll('source');
+                const currentSrc = videoElement.currentSrc || videoElement.src;
+                
+                for (let i = 0; i < sources.length; i++) {
+                    if (sources[i].src === currentSrc && i + 1 < sources.length) {
+                        console.log('Probando formato alternativo:', sources[i + 1].src);
+                        videoElement.src = sources[i + 1].src;
+                        videoElement.load();
+                        break;
+                    }
+                }
+            }, 1000);
+        }
+
+        // Función para detectar compatibilidad del navegador
+        function checkVideoSupport() {
+            const video = document.createElement('video');
+            
+            // Comprobar compatibilidad con MP4
+            const canPlayMP4 = video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"');
+            
+            // Comprobar compatibilidad con WebM
+            const canPlayWebM = video.canPlayType('video/webm; codecs="vp8, vorbis"');
+            
+            // Comprobar compatibilidad con OGG
+            const canPlayOGG = video.canPlayType('video/ogg; codecs="theora, vorbis"');
+            
+            console.log('✅ Compatibilidad del navegador:');
+            console.log('   MP4 H.264:', canPlayMP4);
+            console.log('   WebM VP8:', canPlayWebM);
+            console.log('   OGG Theora:', canPlayOGG);
+            
+            // Mostrar advertencia si hay problemas
+            if (!canPlayMP4 && !canPlayWebM && !canPlayOGG) {
+                console.warn('⚠️ Este navegador no soporta ningún formato de video HTML5');
+                alert('Tu navegador no soporta la reproducción de videos. Por favor, actualiza tu navegador o descarga los videos directamente.');
+            }
+        }
+
+        // ============================================
+        // INICIALIZACIÓN CUANDO EL DOM ESTÁ LISTO
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado - inicializando galería de packaging');
+            
+            // ============================================
+            // OBTENER ELEMENTOS DEL DOM
+            // ============================================
+            // Modal y sus elementos internos
+            const modal = document.getElementById('imageModal');
+            const expandedImage = document.getElementById('expandedImage');
+            const imageCaption = document.getElementById('imageCaption');
+            const closeBtn = document.querySelector('.close-modal');
+            
+            // Todos los elementos de la galería que son clickeables
+            const galleryItems = document.querySelectorAll('.galeria-item');
+            
+            // Elementos de la sección "otros" que son clickeables (solo imágenes)
+            const otrosImagenItems = document.querySelectorAll('.otros-imagen-item');
+            
+            // ============================================
+            // FUNCIONES PARA MANEJAR EL MODAL
+            // ============================================
+            
+            /**
+             * ABRIR MODAL CON UNA IMAGEN ESPECÍFICA
+             */
+            function openModal(index) {
+                console.log('Abriendo modal con índice:', index);
+                
+                // Validar que el índice esté dentro del rango
+                if (index < 0 || index >= imagenesGaleria.length) {
+                    console.error('Índice fuera de rango');
+                    return;
+                }
+                
+                // Obtener datos de la imagen
+                const imagenActual = imagenesGaleria[index];
+                
+                // Actualizar contenido del modal
+                expandedImage.src = imagenActual.src;
+                expandedImage.alt = imagenActual.alt;
+                imageCaption.textContent = imagenActual.caption;
+                
+                // Mostrar el modal
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                document.body.classList.add('modal-open');
+                
+                console.log('Modal mostrado con imagen:', imagenActual.src);
+            }
+            
+            /**
+             * CERRAR EL MODAL
+             */
+            function closeModal() {
+                console.log('Cerrando modal');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                document.body.classList.remove('modal-open');
+            }
+            
+            // ============================================
+            // ASIGNAR EVENTOS A LOS ELEMENTOS DE LA GALERÍA
+            // ============================================
+            
+            // Galería principal
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal(index);
+                });
+            });
+            
+            // Sección otros (si hay imágenes)
+            otrosImagenItems.forEach((item) => {
+                const index = parseInt(item.getAttribute('data-index'));
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal(index);
+                });
+            });
+            
+            // ============================================
+            // ASIGNAR EVENTOS PARA CERRAR EL MODAL
+            // ============================================
+            
+            closeBtn.addEventListener('click', closeModal);
+            
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // ============================================
+            // NAVEGACIÓN CON TECLADO
+            // ============================================
+            document.addEventListener('keydown', function(e) {
+                if (modal.style.display === 'block') {
+                    if (e.key === 'Escape') {
+                        closeModal();
+                    }
+                }
+            });
+            
+            // ============================================
+            // CONFIGURACIÓN DE VIDEOS
+            // ============================================
+            
+            // Configurar todos los videos
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                // Desactivar reproducción automática
+                video.autoplay = false;
+                video.controls = true;
+                
+                // Evento cuando el video se carga correctamente
+                video.addEventListener('loadeddata', function() {
+                    const loading = this.closest('.video-container')?.querySelector('.video-loading');
+                    if (loading) loading.style.display = 'none';
+                    console.log('✅ Video cargado:', this.currentSrc);
+                });
+                
+                // Evento cuando hay error
+                video.addEventListener('error', function() {
+                    videoError(this);
+                });
+                
+                // Evento cuando empieza a cargar
+                video.addEventListener('loadstart', function() {
+                    videoLoading(this);
+                });
+                
+                // Evento cuando termina la reproducción
+                video.addEventListener('ended', function() {
+                    console.log('🎬 Video finalizado:', this.currentSrc);
+                });
+            });
+            
+            // ============================================
+            // PRECARGAR IMÁGENES Y VIDEOS
+            // ============================================
+            window.addEventListener('load', function() {
+                console.log('Precargando imágenes...');
+                
+                // Precargar imágenes
+                imagenesGaleria.forEach(imagen => {
+                    const img = new Image();
+                    img.src = imagen.src;
+                });
+                
+                // Precargar miniaturas de videos
+                const videoThumbs = [
+                    './img/video-thumb-01.jpg',
+                    './img/video-thumb-02.jpg',
+                    './img/video-thumb-03.jpg'
+                ];
+                
+                videoThumbs.forEach(thumb => {
+                    const img = new Image();
+                    img.src = thumb;
+                });
+                
+                console.log('Precarga completada');
+                
+                // Verificar compatibilidad de videos
+                checkVideoSupport();
+            });
+            
+            console.log('✅ Galería de packaging inicializada correctamente');
+        });
+        
+        // ============================================
+        // MANEJO DE ERRORES GLOBALES
+        // ============================================
+        window.addEventListener('error', function(e) {
+            console.error('Error en la página:', e.message);
+            console.error('En el archivo:', e.filename);
+            console.error('En la línea:', e.lineno);
+        });
+    </script>
+</body>
+</html>
