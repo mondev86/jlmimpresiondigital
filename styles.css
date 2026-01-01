@@ -35,7 +35,7 @@ html {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, sans-serif;
+  Ubuntu, sans-serif;
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
@@ -81,7 +81,7 @@ header {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: white;
   white-space: nowrap;
@@ -494,6 +494,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin-top: 12px;
 }
 
 .form-group {
@@ -646,7 +647,7 @@ footer {
   margin-bottom: 1.5rem;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #bababa;
+  color: #959393;
   position: relative;
   padding-bottom: 0.75rem;
 }
@@ -674,7 +675,7 @@ footer {
 }
 
 .footer-section a {
-  color: #bababa;
+  color: #959393;
   text-decoration: none;
   transition: var(--transition);
   display: inline-flex;
@@ -806,14 +807,16 @@ footer {
 .social-icon.instagram:hover::before {
   background: linear-gradient(
     45deg,
-    #405de6,
-    #5851db,
-    #833ab4,
-    #c13584,
-    #e1306c,
-    #fd1d1d
+    rgba(64, 93, 255, 0.55),
+    rgba(110, 70, 255, 0.55),
+    rgba(170, 40, 255, 0.55),
+    rgba(255, 40, 180, 0.55),
+    rgba(255, 60, 120, 0.55),
+    rgba(255, 40, 40, 0.55)
   );
+  filter: brightness(1.35) saturate(1.4); /* 🔥 efecto neón real */
 }
+
 
 
 /* ===== COPYRIGHT ===== */
@@ -1061,13 +1064,13 @@ copyright {
     justify-content: center;
     width: 44px;
     height: 44px;
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     margin-left: auto; /* Empujar a la derecha */
   }
 
   /* Empresa centrada */
   .empresa {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -1104,22 +1107,22 @@ copyright {
   }
 
   .logo img {
-    height: 50px;
+    height: 52px;
   }
 
   .empresa {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
 }
 
 /* iPad Pro 11" (834x1194) y similares */
 @media (min-width: 834px) and (max-width: 1194px) {
   .empresa {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 
   .menu-toggle {
-    font-size: 2rem;
+    font-size: 2.5rem;
     width: 48px;
     height: 48px;
   }
@@ -1142,14 +1145,14 @@ copyright {
   }
 
   .empresa {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     max-width: calc(100% - 120px); /* 60px logo + 60px hamburguesa */
   }
 
   .menu-toggle {
     width: 40px;
     height: 40px;
-    font-size: 1.6rem;
+    font-size: 2.6rem;
   }
 
   /* Menú móvil */
@@ -1174,14 +1177,14 @@ copyright {
   }
 
   .empresa {
-    font-size: 1rem;
+    font-size: 1.2rem;
     max-width: calc(100% - 110px);
   }
 
   .menu-toggle {
     width: 36px;
     height: 36px;
-    font-size: 1.5rem;
+    font-size: 2.2rem;
   }
 
   .mobile-nav {
@@ -1201,12 +1204,12 @@ copyright {
   }
 
   .empresa {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     max-width: calc(100% - 160px);
   }
 
   .menu-toggle {
-    font-size: 2rem;
+    font-size: 2.2rem;
     width: 52px;
     height: 52px;
   }
@@ -1224,7 +1227,7 @@ copyright {
   }
 
   .empresa {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .mobile-nav {

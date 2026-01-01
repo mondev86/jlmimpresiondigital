@@ -1,59 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Impresión Digital JLM en Zaragoza | Vinilos y Rotulación</title>
   <meta charset="UTF-8">
+  <title>Impresión Digital JLM en Zaragoza | Vinilos y Rotulación</title>
   <meta name="description" content="Impresión digital de vinilos, rotulación de locales y papelería en Zaragoza. Calidad profesional y entrega rápida.">
   <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0066cc">
 
-  <!-- Favicon -->
-  <link rel="icon" href="./img/logojlm.jpg" type="image/x-icon">
+  <!-- Favicon optimizado -->
+  <link rel="icon" href="./img/logo-jlm.png" type="image/png">
 
   <!-- Canonical y hreflang -->
   <link rel="canonical" href="https://tu-dominio.com/">
   <link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/">
   <link rel="alternate" hreflang="en" href="https://tu-dominio.com/en/">
-  
-  <!--CSS-->
+
+  <!-- CSS optimizado (preload + carga normal) -->
+  <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Impresión Digital JLM en Zaragoza">
-  <meta property="og:description" content=" Impresion, vinilos, rotulación y papelería personalizada para negocios.">
+  <meta property="og:description" content="Impresión, vinilos, rotulación y papelería personalizada para negocios.">
   <meta property="og:url" content="https://tu-dominio.com/">
   <meta property="og:image" content="https://tu-dominio.com/assets/og-image.jpg">
-
-
-  <!-- Datos estructurados LocalBusiness -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Impresión Digital JLM",
-    "image": "https://tu-dominio.com/assets/og-image.jpg",
-    "url": "https://tu-dominio.com/",
-    "telephone": "+614299302",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Calle Coronna de aragon 28, local",
-      "addressLocality": "Zaragoza",
-      "postalCode": "50009",
-      "addressCountry": "ES"
-    },
-    "openingHours": "Mo-Fr 09:00-18:00",
-    "priceRange": "$$"
-  }
-  </script>
-
- 
 </head>
+
 <body>
 
 <header>
   <div class="logo">
-    <img src="./img/logotranpjlm.png" alt="Logo JLM">
+    <img src="./img/logo-transp-jlm.png" alt="Logo JLM">
   </div>
   
   <div class="empresa">JLM Impresión Digital</div>
@@ -82,7 +61,7 @@
   <div class="container">
     <article>
       <div class="service-image">
-        <img src="./img/grafismo ferias01.jpg" alt="Grafismo para ferias - Trabajos realizados" loading="lazy">
+        <img src="./img/grafismo-ferias-01.jpg" alt="Grafismo para ferias - Trabajos realizados" loading="lazy">
       </div>
       <a href="grafismo-ferias.html"><h3>Grafismo para ferias y eventos</h3></a>
       <p></p>
@@ -98,7 +77,7 @@
     
     <article>
   <div class="service-image">
-    <img src="./img/catalogos libros folletos.jpg" alt="Catálogos impresos - Diseño profesional" loading="lazy">
+    <img src="./img/catalogos-libros-folletos.jpg" alt="Catálogos impresos - Diseño profesional" loading="lazy">
   </div>
   <a href="galeria-catalogos.html"><h3>Catálogos y folletos</h3></a>
   <p></p>
@@ -263,6 +242,27 @@
   </div>
 </footer>
 
+
+ <!-- Datos estructurados LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Impresión Digital JLM",
+    "image": "https://tu-dominio.com/assets/og-image.jpg",
+    "url": "https://tu-dominio.com/",
+    "telephone": "+614299302",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle Coronna de aragon 28, local",
+      "addressLocality": "Zaragoza",
+      "postalCode": "50009",
+      "addressCountry": "ES"
+    },
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "priceRange": "$$"
+  }
+  </script>
 
 <script>
 document.getElementById('contacto-form').addEventListener('submit', function(e) {
