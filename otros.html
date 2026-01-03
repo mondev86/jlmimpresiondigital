@@ -74,12 +74,12 @@
         }
 
         /* Grid para organizar las imágenes */
-        .galeria-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
-        }
+       .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+}
 
         /* Cada ítem de la galería */
         .galeria-item {
@@ -134,12 +134,12 @@
             border-bottom: 3px solid #3498db;
         }
 
-        .otros-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
+    .otros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
 
         /* Estilos para videos - MEJORADOS */
         .video-item {
@@ -562,50 +562,50 @@
             <div class="galeria-grid">
                 <!-- Imagen 1 - Índice 0 -->
                 <div class="galeria-item" data-index="0">
-                    <img src="./img/packaging-01.jpg" alt="Caja personalizada para producto premium" loading="lazy">
+                    <img src="./img/manteles-de-papael-06.png" alt="Caja personalizada para producto premium" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
                 <!-- Imagen 2 - Índice 1 -->
                 <div class="galeria-item" data-index="1">
-                    <img src="./img/packaging-02.jpg" alt="Bolsas ecológicas personalizadas" loading="lazy">
+                    <img src="./img/manteles-de-papael-07.png" alt="Bolsas ecológicas personalizadas" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
-                <!-- Imagen 3 - Índice 2 -->
+                <!-- Imagen 3 - Índice 2
                 <div class="galeria-item" data-index="2">
                     <img src="./img/packaging-03.jpg" alt="Tubos de cartón para posters" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
-                <!-- Imagen 4 - Índice 3 -->
+                
                 <div class="galeria-item" data-index="3">
                     <img src="./img/packaging-04.jpg" alt="Cajas de regalo personalizadas" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
-                <!-- Imagen 5 - Índice 4 -->
+               
                 <div class="galeria-item" data-index="4">
                     <img src="./img/packaging-05.jpg" alt="Embalaje para envíos" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
-                <!-- Imagen 6 - Índice 5 -->
+                
                 <div class="galeria-item" data-index="5">
                     <img src="./img/packaging-06.jpg" alt="Sobres corporativos personalizados" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
-                <!-- Imagen 7 - Índice 6 -->
+                >
                 <div class="galeria-item" data-index="6">
                     <img src="./img/packaging-07.jpg" alt="Packaging para alimentos" loading="lazy">
                     <div class="galeria-caption"></div>
                 </div>
                 
-                <!-- Imagen 8 - Índice 7 -->
+                
                 <div class="galeria-item" data-index="7">
                     <img src="./img/packaging-08.jpg" alt="Cajas plegables para retail" loading="lazy">
-                    <div class="galeria-caption"></div>
+                    <div-- class="galeria-caption"></div-->
                 </div>
             </div>
         </section>
@@ -692,8 +692,27 @@
                     </div>
                 </div>
                 
-                <!-- Nota: Las imágenes de la sección otros están comentadas en tu HTML original -->
-                <!-- Si las necesitas, descomenta los divs y ajusta los índices -->
+                <!-- Video 4 - MEJORADO PARA MÁXIMA COMPATIBILIDAD -->
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls preload="metadata" poster="./img/pantalla-video.png"
+                               onerror="videoError(this)" onloadstart="videoLoading(this)">
+                            <source src="./videos/pantallas.mp4" type="video/mp4">
+                            <source src="./videos/pantallas.mp4.webm" type="video/webm">
+                            <source src="./videos/pantallas.mp4.ogv" type="video/ogg">
+                            
+                            <div class="video-error" style="display: none;">
+                                <p>❌ No se puede reproducir el video</p>
+                            </div>
+                        </video>
+                        <div class="video-loading" style="display: none;">Cargando video...</div>
+                    </div>
+                    <div class="video-info">
+                       
+                        </div>
+                    </div>
+                </div>
+                
                 
             </div>
         </section>
@@ -758,47 +777,16 @@
         // ============================================
         const imagenesGaleria = [
             {
-                src: './img/packaging-01.jpg',
+                src: './img/manteles-de-papael-06.png',
                 alt: 'Caja personalizada para producto premium',
-                caption: 'Caja personalizada para producto premium'
+                caption: 'Manteles personalizados'
             },
             {
-                src: './img/packaging-02.jpg',
+                src: './img/manteles-de-papael-07.png',
                 alt: 'Bolsas ecológicas personalizadas',
-                caption: 'Bolsas ecológicas personalizadas'
-            },
-            {
-                src: './img/packaging-03.jpg',
-                alt: 'Tubos de cartón para posters',
-                caption: 'Tubos de cartón para posters'
-            },
-            {
-                src: './img/packaging-04.jpg',
-                alt: 'Cajas de regalo personalizadas',
-                caption: 'Cajas de regalo personalizadas'
-            },
-            {
-                src: './img/packaging-05.jpg',
-                alt: 'Embalaje para envíos',
-                caption: 'Embalaje para envíos'
-            },
-            {
-                src: './img/packaging-06.jpg',
-                alt: 'Sobres corporativos personalizados',
-                caption: 'Sobres corporativos personalizados'
-            },
-            {
-                src: './img/packaging-07.jpg',
-                alt: 'Packaging para alimentos',
-                caption: 'Packaging para alimentos'
-            },
-            {
-                src: './img/packaging-08.jpg',
-                alt: 'Cajas plegables para retail',
-                caption: 'Cajas plegables para retail'
+                caption: 'Papel termico'
             }
-            // Nota: Las imágenes de la sección "otros" están comentadas
-            // Si las necesitas, añádelas aquí con índices 8, 9, 10
+            
         ];
 
         // ============================================
@@ -1026,7 +1014,8 @@
                 const videoThumbs = [
                     './img/video-thumb-01.jpg',
                     './img/video-thumb-02.jpg',
-                    './img/video-thumb-03.jpg'
+                    './img/video-thumb-03.jpg',
+                    '/img/video-thumb-04.jpg'
                 ];
                 
                 videoThumbs.forEach(thumb => {

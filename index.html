@@ -2,31 +2,54 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Impresión Digital JLM en Zaragoza | Vinilos y Rotulación</title>
-  <meta name="description" content="Impresión digital de vinilos, rotulación de locales y papelería en Zaragoza. Calidad profesional y entrega rápida.">
+
+  <!-- SEO principal -->
+  <title>Impresión Digital JLM en Zaragoza | Rotulación, Vinilos y Diseño</title>
+  <meta name="description" content="Impresión Digital JLM en Zaragoza. Rotulación, vinilos, cartelería, papelería y diseño gráfico para negocios. Calidad profesional y atención personalizada.">
   <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0066cc">
 
-  <!-- Favicon optimizado -->
+  <!-- Favicon -->
   <link rel="icon" href="./img/logo-jlm.png" type="image/png">
 
-  <!-- Canonical y hreflang -->
-  <link rel="canonical" href="https://tu-dominio.com/">
-  <link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/">
-  <link rel="alternate" hreflang="en" href="https://tu-dominio.com/en/">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://impresiondigitaljlm.es/">
 
-  <!-- CSS optimizado (preload + carga normal) -->
+
+  <!-- CSS optimizado -->
   <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Impresión Digital JLM en Zaragoza">
-  <meta property="og:description" content="Impresión, vinilos, rotulación y papelería personalizada para negocios.">
-  <meta property="og:url" content="https://tu-dominio.com/">
-  <meta property="og:image" content="https://tu-dominio.com/assets/og-image.jpg">
+  <meta property="og:description" content="Rotulación, vinilos, cartelería y diseño gráfico profesional en Zaragoza.">
+  <meta property="og:url" content="https://impresiondigitaljlm.es/">
+  <meta property="og:image" content="https://impresiondigitaljlm.es/img/og-image.jpg">
+
+  <!-- Datos estructurados LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Impresión Digital JLM",
+    "image": "https://impresiondigitaljlm.es/img/og-image.jpg", 
+    "url": "https://impresiondigitaljlm.es/",
+    "telephone": "+34 614 299 302",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle Corona de Aragón 28",
+      "addressLocality": "Zaragoza",
+      "postalCode": "50009",
+      "addressCountry": "ES"
+    },
+    "openingHours": "Mo-Fr 08:30-20:00",
+    "priceRange": "$$"
+  }
+  </script>
 </head>
+
 
 <body>
 
@@ -85,7 +108,7 @@
     
     <article>
       <div class="service-image">
-        <img src="./img/ropa-00.jpg" alt=Folletos publicitarios - Impresión" loading="lazy">
+        <img src="./img/ropa-00.jpg" alt=Folletos publicitarios - Impresión loading="lazy">
       </div>
       <a href="ropa-laboral.html"><h3>Ropa laboral y mas</h3></a>
       <p></p>
@@ -109,15 +132,15 @@
     
     <article>
       <div class="service-image">
-        <img src="./img/papeleria JLM-01.png" alt="Papelería corporativa - Diseño e impresión" loading="lazy">
+        <img src="./img/papeleria-JLM-01.png" alt="Papelería corporativa - Diseño e impresión" loading="lazy">
       </div>
-      <a href="./img/papeleria JLM-01.png"><h3>Papelería</h3></a>
+      <a href="./img/papeleria-JLM-01.png"><h3>Papelería</h3></a>
       <p></p>
     </article>
     
     <article>
       <div class="service-image">
-        <img src="./img/carteleria muestra02.png" alt="Otros servicios de impresión" loading="lazy">
+        <img src="./img/manteles-de-papael-06.png" alt="Manteles" loading="lazy">
       </div>
       <a href="otros.html"><h3>Otros</h3></a>
       <p></p>
@@ -127,7 +150,7 @@
 
     <section id="contacto">
       <h2>Contacto</h2>
-      <p><strong>Teléfono:</strong> <a href="tel:+34123456789">+34 614 299 302</a></p> 
+      <p><strong>Teléfono:</strong> <a href="tel:+34614299302">+34 614 299 302</a></p> 
       <a href="mailto:produccion@jlmimpresiondigital.es?subject=Consulta%20desde%20la%20web&body=Hola,%20quisiera%20información%20sobre...">
       produccion@jlmimpresiondigital.es
       </a>
@@ -242,64 +265,8 @@
   </div>
 </footer>
 
+<script src="script.js" defer></script>
+<script src="form.js" defer></script>
 
- <!-- Datos estructurados LocalBusiness -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Impresión Digital JLM",
-    "image": "https://tu-dominio.com/assets/og-image.jpg",
-    "url": "https://tu-dominio.com/",
-    "telephone": "+614299302",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Calle Coronna de aragon 28, local",
-      "addressLocality": "Zaragoza",
-      "postalCode": "50009",
-      "addressCountry": "ES"
-    },
-    "openingHours": "Mo-Fr 09:00-18:00",
-    "priceRange": "$$"
-  }
-  </script>
-
-<script>
-document.getElementById('contacto-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Protección anti‑bots (honeypot)
-    if (document.getElementById('empresa').value !== "") {
-        return; // Bot detectado, no hacemos nada
-    }
-
-    const nombre = document.getElementById('nombre').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const mensaje = document.getElementById('mensaje').value.trim();
-
-    // Validación extra
-    if (nombre.length < 3) {
-        alert("El nombre es demasiado corto");
-        return;
-    }
-
-    if (mensaje.length < 10) {
-        alert("El mensaje es demasiado corto");
-        return;
-    }
-
-    // Construir mailto
-    const mailto = `mailto:produccion@jlmimpresiondigital.es
-?subject=Mensaje de ${encodeURIComponent(nombre)}
-&body=Nombre: ${encodeURIComponent(nombre)}
-%0AEmail: ${encodeURIComponent(email)}
-%0AMensaje:%0A${encodeURIComponent(mensaje)}`;
-
-    // Abrir cliente de correo
-    window.location.href = mailto;
-});
-</script>
-
-<script src="script.js"></script>
 </body>
 </html>
