@@ -1,84 +1,63 @@
 document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.querySelector('.menu-toggle');
-  const desktopNav = document.querySelector('.nav-menu');
-  const body = document.body;
+  const mobileNav = document.querySelector('.mobile-nav');
+  const menuOverlay = document.querySelector('.menu-overlay');
+  const hamburger = document.querySelector('.hamburger');
   
-  // 1. Crear menú móvil
-  const mobileNav = desktopNav.cloneNode(true);
-  mobileNav.classList.remove('nav-menu');
-  mobileNav.classList.add('mobile-nav');
-  body.appendChild(mobileNav);
+  let isMenuOpen = false;
   
-  // 2. Crear overlay
-  const overlay = document.createElement('div');
-  overlay.className = 'menu-overlay';
-  body.appendChild(overlay);
-  
-  // 3. Función para abrir/cerrar menú
   function toggleMenu() {
-    const isOpen = mobileNav.classList.contains('active');
+    isMenuOpen = !isMenuOpen;
     
-    if (isOpen) {
-      // Cerrar
-      mobileNav.classList.remove('active');
-      overlay.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.innerHTML = '<span class="hamburger">≡</span>';
-      body.style.overflow = 'auto';
-    } else {
-      // Abrir
+    if (isMenuOpen) {
       mobileNav.classList.add('active');
-      overlay.classList.add('active');
+      menuOverlay.classList.add('active');
+      hamburger.textContent = 'x';
       menuToggle.setAttribute('aria-expanded', 'true');
-      menuToggle.innerHTML = '<span class="hamburger">✕</span>';
-      body.style.overflow = 'hidden';
-    }
-  }
-  
-  // 4. Función para manejar responsive
-  function handleResponsive() {
-    const width = window.innerWidth;
-    
-    if (width <= 1024) {
-      // Móvil/Tablet - mostrar hamburguesa, ocultar nav
-      desktopNav.style.display = 'none';
-      menuToggle.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     } else {
-      // Desktop - mostrar nav, ocultar hamburguesa y menú móvil
-      desktopNav.style.display = 'block';
-      menuToggle.style.display = 'none';
-      
-      // Cerrar menú móvil si está abierto
-      if (mobileNav.classList.contains('active')) {
-        mobileNav.classList.remove('active');
-        overlay.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.innerHTML = '<span class="hamburger">≡</span>';
-        body.style.overflow = 'auto';
-      }
+      mobileNav.classList.remove('active');
+      menuOverlay.classList.remove('active');
+      hamburger.textContent = '≡';
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
     }
   }
   
-  // 5. Event Listeners
+  // Event listeners
   menuToggle.addEventListener('click', toggleMenu);
-  overlay.addEventListener('click', toggleMenu);
+  menuOverlay.addEventListener('click', toggleMenu);
   
-  // Cerrar menú al hacer clic en enlace
-  mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', toggleMenu);
+  // Cerrar menú al hacer clic en links
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (isMenuOpen) toggleMenu();
+    });
   });
   
-  // Cerrar con Escape
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+  // Cerrar menú con ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isMenuOpen) {
       toggleMenu();
     }
   });
   
-  // 6. Inicializar y escuchar cambios
-  handleResponsive();
-  window.addEventListener('resize', handleResponsive);
+  // Rellenar menú móvil
+  const navItems = document.querySelectorAll('.nav-menu a');
+  const mobileNavUl = document.createElement('ul');
   
-  // 7. Forzar redibujado en dispositivos específicos
-  setTimeout(handleResponsive, 100);
+  navItems.forEach(link => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = link.href;
+    a.textContent = link.textContent;
+    a.addEventListener('click', () => {
+      if (isMenuOpen) toggleMenu();
+    });
+    li.appendChild(a);
+    mobileNavUl.appendChild(li);
+  });
+  
+  mobileNav.appendChild(mobileNavUl);
 });

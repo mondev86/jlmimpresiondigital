@@ -1,15 +1,378 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre nosotros</title>
+    <title>Sobre Nosotros | Impresión Digital JLM</title>
+    <style>
+        /* ============================================
+           ESTILOS GENERALES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* ============================================
+           SECCIÓN SOBRE NOSOTROS
+           ============================================ */
+        #sobre-nosotros {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        #sobre-nosotros h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+
+        #sobre-nosotros h3 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin: 30px 0 40px 0;
+            font-weight: 600;
+        }
+
+        #sobre-nosotros > p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Grid para videos */
+        .sobre-nosotros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Estilos para videos */
+        .video-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Contenedor de video */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Información del video */
+        .video-info {
+            padding: 20px;
+            background: white;
+            text-align: center;
+        }
+
+        .video-info p {
+            color: #2c3e50;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .video-info strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* Indicador de carga para videos */
+        .video-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 2;
+        }
+
+        /* Mensaje de error para videos */
+        .video-error {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff6b6b;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.8);
+            border-radius: 5px;
+            z-index: 2;
+            width: 80%;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            #sobre-nosotros h2 {
+                font-size: 2rem;
+            }
+            
+            #sobre-nosotros h3 {
+                font-size: 1.5rem;
+                margin: 20px 0 30px 0;
+            }
+            
+            .sobre-nosotros-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-top: 30px;
+            }
+            
+            .video-container {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #sobre-nosotros h2 {
+                font-size: 1.8rem;
+            }
+            
+            #sobre-nosotros h3 {
+                font-size: 1.3rem;
+            }
+            
+            #sobre-nosotros > p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-     <section id="sobre-nosotros">
-      <h2>Sobre nosotros</h2>
-      <p style="font-size: large;">Somos especialistas en impresión digital, vinilos y rotulación con años de experiencia en Zaragoza. Nuestro compromiso es ofrecer calidad, rapidez y atención personalizada.</p>
-       <a href="index.html#servicios" class="back-btn">⬅️</a>
+    <!-- ============================================
+         SECCIÓN SOBRE NOSOTROS
+         ============================================ -->
+    <section id="sobre-nosotros">
+    <header>
+   <a href="index.html#servicios" class="back-btn">⬅️</a>
+   </header>
+        <h2>Sobre nosotros</h2>
+        <p style="font-size: 1.1rem; line-height: 1.8;">
+            Somos especialistas en impresión digital de alta calidad. 
+            Nos dedicamos a transformar ideas en productos tangibles con precisión y atención al detalle. 
+            Nuestro compromiso es ofrecer soluciones personalizadas, entregas rápidas y un servicio al cliente excepcional 
+            en cada proyecto de impresión que realizamos.
+        </p>
+        
+        <!-- ENCABEZADO NUEVO -->
+        <h3>Somos fabricantes directos</h3>
+        
+        <div class="sobre-nosotros-grid">
+            <!-- Video 1 -->
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls preload="metadata" poster="./img/plana-imagen.png"
+                           onerror="videoError(this)" onloadstart="videoLoading(this)">
+                        <!-- Formato principal - MP4 H.264 -->
+                        <source src="./videos/plana.mp4" type="video/mp4">
+                        <!-- Formato alternativo - WebM -->
+                        <source src="./videos/plana.mp4.webm" type="video/webm">
+                        <!-- Formato alternativo - OGG -->
+                        <source src="./videos/plana.mp4.ogv" type="video/ogg">
+                        
+                        <!-- Mensaje de fallback -->
+                        <div class="video-error" style="display: none;">
+                            <p>❌ No se puede reproducir el video</p>
+                        </div>
+                    </video>
+                    <div class="video-loading" style="display: none;">Cargando video...</div>
+                </div>
+                <div class="video-info">
+                    <p><strong>Impresión sobre todo tipo de material.</strong></p>
+                </div>
+            </div>
+            
+            <!-- Video 2 -->
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls preload="metadata" poster="./img/vinilo-negro.png"
+                           onerror="videoError(this)" onloadstart="videoLoading(this)">
+                        <!-- Formato principal - MP4 H.264 -->
+                        <source src="./videos/vinilo.mp4" type="video/mp4">
+                        <!-- Formato alternativo - WebM -->
+                        <source src="./videos/vinilo.mp4.webm" type="video/webm">
+                        <!-- Formato alternativo - OGG -->
+                        <source src="./videos/vinilo.mp4.ogv" type="video/ogg">
+                        
+                        <!-- Mensaje de fallback -->
+                        <div class="video-error" style="display: none;">
+                            <p>❌ No se puede reproducir el video</p>
+                        </div>
+                    </video>
+                    <div class="video-loading" style="display: none;">Cargando video...</div>
+                </div>
+                <div class="video-info">
+                    <p><strong>Impresión en materiales flexibles, vinilo, papel, lona, etc.</strong></p>
+                </div>
+            </div>
+            
+            <!-- Video 3 -->
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls preload="metadata" poster="./img/impresora-bolsas-papel.png"
+                           onerror="videoError(this)" onloadstart="videoLoading(this)">
+                        <source src="./videos/impresora.mp4" type="video/mp4">
+                        <source src="./videos/impresora.mp4.webm" type="video/webm">
+                        <source src="./videos/impresora.mp4.ogv" type="video/ogg">
+                        
+                        <div class="video-error" style="display: none;">
+                            <p>❌ No se puede reproducir el video</p>
+                        </div>
+                    </video>
+                    <div class="video-loading" style="display: none;">Cargando video...</div>
+                </div>
+                <div class="video-info">
+                    <p><strong>Packaging personalizado</strong></p>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer>
+        <p>&copy; 2025 Impresión Digital JLM — Zaragoza</p>
+        <p>Contacto: produccion@jlmimpresiondigital.com | Tel: 614 - 299 - 302</p>
+        <a href="index.html#servicios" class="back-btn">← Volver a Servicios</a>
+    </footer>
+
+    <!-- ============================================
+         SCRIPT PARA VIDEOS
+         ============================================ -->
+    <script>
+        // Función para mostrar estado de carga
+        function videoLoading(videoElement) {
+            const container = videoElement.closest('.video-container');
+            const loading = container.querySelector('.video-loading');
+            const error = container.querySelector('.video-error');
+            
+            if (loading) loading.style.display = 'block';
+            if (error) error.style.display = 'none';
+        }
+
+        // Función para manejar errores de video
+        function videoError(videoElement) {
+            console.error('Error al cargar el video:', videoElement.currentSrc || videoElement.src);
+            
+            const container = videoElement.closest('.video-container');
+            const loading = container.querySelector('.video-loading');
+            const error = container.querySelector('.video-error');
+            
+            if (loading) loading.style.display = 'none';
+            if (error) error.style.display = 'block';
+            
+            // Intentar cargar automáticamente el siguiente formato
+            setTimeout(() => {
+                const sources = videoElement.querySelectorAll('source');
+                const currentSrc = videoElement.currentSrc || videoElement.src;
+                
+                for (let i = 0; i < sources.length; i++) {
+                    if (sources[i].src === currentSrc && i + 1 < sources.length) {
+                        console.log('Probando formato alternativo:', sources[i + 1].src);
+                        videoElement.src = sources[i + 1].src;
+                        videoElement.load();
+                        break;
+                    }
+                }
+            }, 1000);
+        }
+
+        // Configurar todos los videos cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.autoplay = false;
+                video.controls = true;
+                
+                video.addEventListener('loadeddata', function() {
+                    const loading = this.closest('.video-container')?.querySelector('.video-loading');
+                    if (loading) loading.style.display = 'none';
+                });
+                
+                video.addEventListener('error', function() {
+                    videoError(this);
+                });
+                
+                video.addEventListener('loadstart', function() {
+                    videoLoading(this);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

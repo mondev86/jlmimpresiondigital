@@ -19,7 +19,6 @@
     rgba(202, 203, 207, 0.9) 0%,
     rgba(98, 76, 120, 0.9) 100%
   );
-  --muted: (#080808);
 }
 
 * {
@@ -30,12 +29,12 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /*para ajustar la altura del contenido*/
+  scroll-padding-top: 80px;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-  Ubuntu, sans-serif;
+    Ubuntu, sans-serif;
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
@@ -55,33 +54,37 @@ header {
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 /* Logo */
 .logo {
   flex: 0 0 auto;
   z-index: 1002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo img {
   height: 68px;
   width: auto;
   display: block;
-  transition: transform 0.3s ease-in-out; /* Suaviza el efecto */
-  cursor: pointer; /* Cambia el cursor a una mano */
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .logo img:hover {
-  transform: scale(1.1); /* Escala el logo al 120% (acercar) */
-  /* Para disminuir, usa valores menores a 1, ej: scale(0.8); */
+  transform: scale(1.1);
 }
 
 /* Empresa CENTRADA */
 .empresa {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.6rem;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.4rem;
   font-weight: 700;
   color: white;
   white-space: nowrap;
@@ -89,6 +92,7 @@ header {
   margin: 0;
   padding: 0;
   pointer-events: none;
+  z-index: 1;
 }
 
 /* Botón hamburguesa - Oculto en desktop */
@@ -97,7 +101,7 @@ header {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0;
   z-index: 1002;
   color: white;
   font-size: 1.8rem;
@@ -105,6 +109,21 @@ header {
   width: 44px;
   height: 44px;
   flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hamburger {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 1;
+  color: white;
+  transition: all 0.3s ease;
+  user-select: none;
+  letter-spacing: 0;
+  margin-right: auto;
 }
 
 /* Navegación DESKTOP */
@@ -134,6 +153,7 @@ header {
 .nav-menu a:hover {
   background: rgba(255, 255, 255, 0.1);
 }
+
 /* Main */
 main {
   max-width: 1200px;
@@ -179,7 +199,7 @@ main {
   }
 }
 
-/* Alternativa: Hero dividido en dos columnas */
+/* Hero dividido en dos columnas */
 .hero-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -202,67 +222,6 @@ main {
   width: 100%;
   border-radius: var(--radius);
   box-shadow: var(--shadow-hover);
-}
-
-/* Para mobile */
-@media (max-width: 768px) {
-  .hero {
-    min-height: 500px;
-    padding: 3rem 1rem;
-  }
-
-  .hero h1 {
-    font-size: 2.25rem;
-  }
-
-  .hero p {
-    font-size: 1.125rem;
-  }
-
-  .hero-image-container {
-    max-width: 100%;
-    margin: 2rem auto 0;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-buttons .btn {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .hero-split {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero-text {
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    min-height: 400px;
-  }
-
-  .hero h1 {
-    font-size: 1.875rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .hero-image-container::before {
-    top: 5px;
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
-  }
 }
 
 /* Botones mejorados */
@@ -444,42 +403,6 @@ section h2 {
   color: inherit;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  #servicios {
-    padding: 2rem 1rem;
-  }
-
-  #servicios h2 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-  }
-
-  .container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-
-  .container article {
-    padding: 1.2rem;
-    min-height: 160px;
-  }
-
-  .service-image {
-    height: 100px;
-  }
-
-  .container article h3 {
-    font-size: 1.1rem;
-  }
-}
-
-/* Para pantallas grandes */
-@media (min-width: 1200px) {
-  .container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
 /* Formulario mejorado */
 .form-container {
   max-width: 500px;
@@ -494,7 +417,6 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-top: 12px;
 }
 
 .form-group {
@@ -544,7 +466,6 @@ button[type="submit"] {
   margin-top: 1rem;
 }
 
-/*Boton enviar*/
 /* Botón Enviar elegante */
 .btn-submit-pro {
   padding: 1rem 3rem;
@@ -567,7 +488,6 @@ button[type="submit"] {
   margin-bottom: 50px;
 }
 
-/* Efecto de onda al hacer clic */
 .btn-submit-pro::after {
   content: "";
   position: absolute;
@@ -595,32 +515,12 @@ button[type="submit"] {
   animation: ripple 0.6s ease-out;
 }
 
-@keyframes ripple {
-  0% {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(40);
-    opacity: 0;
-  }
-}
-
 .btn-submit-pro:focus {
   outline: 2px solid var(--brand);
   outline-offset: 3px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .btn-submit-pro {
-    padding: 0.875rem 2rem;
-    font-size: 1rem;
-    max-width: 280px;
-  }
-}
-
-/* ===== FOOTER GENERAL ===== */
+/* FOOTER GENERAL */
 footer {
   background-color: var(--card);
   color: #080808;
@@ -629,7 +529,7 @@ footer {
   text-align: center;
 }
 
-/* ===== GRID PRINCIPAL ===== */
+/* GRID PRINCIPAL */
 .footer-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -638,7 +538,7 @@ footer {
   margin: 0 auto 2rem;
 }
 
-/* ===== SECCIONES ===== */
+/* SECCIONES */
 .footer-section {
   margin-bottom: 1rem;
 }
@@ -647,7 +547,7 @@ footer {
   margin-bottom: 1.5rem;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #959393;
+  color: #bababa;
   position: relative;
   padding-bottom: 0.75rem;
 }
@@ -663,8 +563,7 @@ footer {
   background: var(--brand);
 }
 
-
-/* ===== LISTAS ===== */
+/* LISTAS */
 .footer-section ul {
   list-style: none;
   padding: 0;
@@ -675,7 +574,7 @@ footer {
 }
 
 .footer-section a {
-  color: #959393;
+  color: #bababa;
   text-decoration: none;
   transition: var(--transition);
   display: inline-flex;
@@ -696,8 +595,7 @@ footer {
   border-radius: 8px;
 }
 
-
-/* ===== ENLACES LEGALES ===== */
+/* ENLACES LEGALES */
 .legal-links {
   display: flex;
   flex-wrap: wrap;
@@ -731,7 +629,7 @@ footer {
   color: #567caa;
 }
 
-/* ===== ICONOS SOCIALES ===== */
+/* ICONOS SOCIALES */
 .social-icons {
   display: flex;
   justify-content: center;
@@ -753,10 +651,9 @@ footer {
   text-decoration: none;
   transition: var(--transition);
   position: relative;
-  overflow: visible; /* 🔥 IMPORTANTE: permite ver el SVG */
+  overflow: visible;
 }
 
-/* Hover background */
 .social-icon::before {
   content: "";
   position: absolute;
@@ -765,14 +662,13 @@ footer {
   border-radius: 50%;
   transform: scale(0);
   transition: transform 0.3s ease;
-  z-index: 1; /* 🔥 debajo del SVG */
+  z-index: 1;
 }
 
 .social-icon:hover::before {
   transform: scale(1);
 }
 
-/* Icono Instagram (PNG) */
 .social-icon.instagram {
   background-image: url("img/instagram.png");
   background-size: 60%;
@@ -780,26 +676,22 @@ footer {
   background-position: center;
 }
 
-/* Evitar que ::after tape el PNG */
 .social-icon.instagram::after {
   content: none !important;
 }
 
-/* Icono WhatsApp (SVG) */
 .social-icon svg {
   position: relative;
-  z-index: 2; /* 🔥 encima del hover */
+  z-index: 2;
   width: 30px;
   height: 30px;
 }
 
-/* Hover elevación */
 .social-icon:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
 }
 
-/* Hover colores personalizados */
 .social-icon.whatsapp:hover::before {
   background: #28ef6e;
 }
@@ -807,162 +699,21 @@ footer {
 .social-icon.instagram:hover::before {
   background: linear-gradient(
     45deg,
-    rgba(64, 93, 255, 0.55),
-    rgba(110, 70, 255, 0.55),
-    rgba(170, 40, 255, 0.55),
-    rgba(255, 40, 180, 0.55),
-    rgba(255, 60, 120, 0.55),
-    rgba(255, 40, 40, 0.55)
+    #405de6,
+    #5851db,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1d
   );
-  filter: brightness(1.35) saturate(1.4); /* 🔥 efecto neón real */
 }
 
-
-
-/* ===== COPYRIGHT ===== */
+/* COPYRIGHT */
 copyright {
   margin-top: 0.9rem;
   font-size: 0.8rem;
   color: #718096;
   text-align: center;
-}
-
-/* Responsive mejorado */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-  }
-
-  .empresa {
-    order: -1;
-    margin: 0;
-  }
-
-  nav ul {
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  .hero h1 {
-    font-size: 2.25rem;
-  }
-
-  .hero p {
-    font-size: 1.125rem;
-  }
-
-  section h2 {
-    font-size: 2rem;
-  }
-
-  .container {
-    grid-template-columns: 1fr;
-  }
-
-  .form-container {
-    padding: 1.5rem;
-  }
-
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  
-  .footer-section h4 {
-  text-align: center;
-  position: relative; /* necesario para centrar el ::after */
-}
-
-.footer-section h4::after {
-  content: "";
-  position: absolute; /* necesario */
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 2px;
-  background: var(--brand);
-}
-
-
-  .social-icons {
-    justify-content: center;
-  }
-
-  .legal-links {
-    justify-content: center;
-  }
-
-  .legal-info {
-    flex-direction: column;
-    gap: 1rem;
-  }
-}
-
-/* En móviles, asegurar que se vea lo más importante */
-@media (max-width: 768px) {
-  .hero {
-    background-position: 30% center; /* Mover un poco a la izquierda */
-    min-height: 70vh;
-  }
-
-  /* Asegurar que el texto esté legible */
-  .hero-content {
-    background: rgba(0, 0, 0, 0.4); /* Fondo más oscuro en móviles */
-    padding: 1.5rem;
-    border-radius: var(--radius);
-  }
-}
-
-/* En tablets, ajuste fino */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .hero {
-    background-position: 40% center;
-  }
-}
-
-/* En su lugar, usar esta regla más específica: */
-@media (max-width: 480px) {
-  .hero {
-    padding: 2rem 1rem;
-    min-height: 60vh;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero h1 .highlight {
-    font-size: 2.2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .btn {
-    width: 100%;
-    margin: 0.5rem 0;
-  }
-
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .social-icon {
-    width: 40px;
-    height: 40px;
-    overflow: visible;
-  }
-
-
-  .btn-submit-pro {
-    padding: 0.8rem 1.5rem;
-    max-width: 100%;
-  }
 }
 
 /* Animaciones */
@@ -1049,7 +800,6 @@ copyright {
 @media (max-width: 1024px) {
   header {
     padding: 0.75rem 1rem;
-    position: relative;
   }
 
   /* Ocultar nav desktop */
@@ -1064,22 +814,23 @@ copyright {
     justify-content: center;
     width: 44px;
     height: 44px;
-    font-size: 2.5rem;
-    margin-left: auto; /* Empujar a la derecha */
+    font-size: 1.8rem;
+    margin-left: auto;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+    color: white;
+    line-height: 1;
   }
 
   /* Empresa centrada */
   .empresa {
-    font-size: 1.4rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: calc(100% - 140px); /* 70px logo + 70px hamburguesa */
-    white-space: nowrap;
+    font-size: 1.2rem;
+    max-width: calc(100% - 140px);
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 0;
-    padding: 0;
   }
 
   .logo {
@@ -1089,17 +840,15 @@ copyright {
   .logo img {
     height: 45px;
     width: auto;
-    margin-top: 0 !important; /* QUITAR el margin-top que causa problemas */
   }
 }
 
 /* 2. TABLETS ESPECÍFICAS */
-/* iPad Air (820x1180) */
 @media (width: 820px) and (height: 1180px),
   (width: 768px) and (height: 1024px) {
   header {
     min-height: 80px;
-    align-items: center !important; /* Centrar verticalmente */
+    align-items: center !important;
   }
 
   .logo {
@@ -1107,22 +856,22 @@ copyright {
   }
 
   .logo img {
-    height: 52px;
+    height: 50px;
   }
 
   .empresa {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 }
 
 /* iPad Pro 11" (834x1194) y similares */
 @media (min-width: 834px) and (max-width: 1194px) {
   .empresa {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   .menu-toggle {
-    font-size: 2.5rem;
+    font-size: 2rem;
     width: 48px;
     height: 48px;
   }
@@ -1132,7 +881,8 @@ copyright {
 @media (max-width: 767px) {
   header {
     padding: 0.5rem 1rem;
-    min-height: 70px;
+    min-height: 65px;
+    overflow: hidden;
   }
 
   .logo {
@@ -1141,24 +891,167 @@ copyright {
 
   .logo img {
     height: 42px;
-    margin-top: 0 !important; /* IMPORTANTE: quitar margin-top */
   }
 
   .empresa {
-    font-size: 1.4rem;
-    max-width: calc(100% - 120px); /* 60px logo + 60px hamburguesa */
+    font-size: 1.1rem;
+    max-width: calc(100% - 120px);
   }
 
   .menu-toggle {
     width: 40px;
     height: 40px;
-    font-size: 2.6rem;
+    font-size: 1.6rem;
   }
 
-  /* Menú móvil */
+  .hamburger {
+    font-size: 1.6rem;
+  }
+
   .mobile-nav {
-    width: 250px;
-    padding: 5rem 1.5rem 1.5rem;
+    top: 70px;  /* Aumenta de 65px a 70px */
+    height: calc(100vh - 70px);
+    width: 280px;
+    padding: 2rem 1.5rem 1.5rem;
+    right: -280px;
+  }
+
+  .mobile-nav.active {
+    right: 0;
+  }
+
+  .mobile-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-nav li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding: 1.2rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-nav a:hover {
+    color: var(--brand);
+    padding-left: 0.5rem;
+  }
+
+  .hero {
+    background-position: 30% center;
+    min-height: 70vh;
+  }
+
+  .hero-content {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+  }
+
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero p {
+    font-size: 1.125rem;
+  }
+
+  section h2 {
+    font-size: 2rem;
+  }
+
+  #servicios {
+    padding: 2rem 1rem;
+  }
+
+  #servicios h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .container article {
+    padding: 1.2rem;
+    min-height: 160px;
+  }
+
+  .service-image {
+    height: 100px;
+  }
+
+  .container article h3 {
+    font-size: 1.1rem;
+  }
+
+  .hero-split {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-image-container {
+    max-width: 100%;
+    margin: 2rem auto 0;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .form-container {
+    padding: 1.5rem;
+  }
+
+  .btn-submit-pro {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    max-width: 280px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-section h4 {
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .legal-links {
+    justify-content: center;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -1166,6 +1059,7 @@ copyright {
 @media (max-width: 480px) {
   header {
     padding: 0.5rem 0.75rem;
+    min-height: 60px;
   }
 
   .logo {
@@ -1177,18 +1071,92 @@ copyright {
   }
 
   .empresa {
-    font-size: 1.2rem;
+    font-size: 0.95rem;
     max-width: calc(100% - 110px);
   }
 
   .menu-toggle {
     width: 36px;
     height: 36px;
-    font-size: 2.2rem;
+    font-size: 1.5rem;
+  }
+
+  .hamburger {
+    font-size: 1.5rem;
   }
 
   .mobile-nav {
-    width: 220px;
+    top: 60px;
+    height: calc(100vh - 60px);
+    width: 260px;
+    padding: 1.5rem;
+    right: -260px;
+  }
+
+  .mobile-nav a {
+    padding: 1rem 0;
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+    min-height: 60vh;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero h1 .highlight {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    align-items: center;
+  justify-content: center;
+
+  }
+
+  .social-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .btn-submit-pro {
+    padding: 0.8rem 1.5rem;
+    max-width: 100%;
+  }
+
+  .footer-photo {
+    max-width: 90%;
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+  }
+
+  .container {
+    gap: 0.8rem;
+  }
+
+  .container article {
+    padding: 1rem;
+  }
+
+  .service-image {
+    height: 80px;
   }
 }
 
@@ -1204,14 +1172,18 @@ copyright {
   }
 
   .empresa {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     max-width: calc(100% - 160px);
   }
 
   .menu-toggle {
-    font-size: 2.2rem;
+    font-size: 2rem;
     width: 52px;
     height: 52px;
+  }
+
+  .hamburger {
+    font-size: 2rem;
   }
 }
 
@@ -1227,7 +1199,7 @@ copyright {
   }
 
   .empresa {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .mobile-nav {
@@ -1251,27 +1223,22 @@ copyright {
   .menu-toggle {
     display: none !important;
   }
-
-  .empresa {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
 }
 
 /* 8. MENÚ MÓVIL (estilos base) */
 .mobile-nav {
   display: none;
   position: fixed;
-  top: 0;
+  top: 70px;
   right: -100%;
   width: 280px;
-  height: 100vh;
+  height: calc(100vh - 70px);
   background: var(--dark);
-  padding: 6rem 2rem 2rem;
+  padding: 2rem;
   transition: right 0.3s ease;
   z-index: 1001;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
 }
 
 .mobile-nav.active {
@@ -1285,6 +1252,8 @@ copyright {
   margin: 0;
   padding: 0;
   list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .mobile-nav li {
@@ -1293,15 +1262,17 @@ copyright {
 
 .mobile-nav a {
   display: block;
-  padding: 1rem 0;
+  padding: 1.2rem 0;
   font-size: 1.1rem;
+  font-weight: 500;
   color: white;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .mobile-nav a:hover {
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--brand);
+  padding-left: 0.5rem;
 }
 
 /* 9. OVERLAY */
@@ -1314,6 +1285,7 @@ copyright {
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
+  transition: opacity 0.3s ease;
 }
 
 .menu-overlay.active {
@@ -1340,58 +1312,9 @@ copyright {
   }
 }
 
-@media (max-width: 767px) {
-  .hero {
-    min-height: 60vh;
-    padding: 2rem 1rem;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero h1 .highlight {
-    font-size: 2.2rem;
-  }
-
-  .hero p {
-    font-size: 1.1rem;
-  }
-
-  .hero-btn {
-    padding: 0.9rem 2rem;
-    font-size: 1rem;
-    min-width: 200px;
-  }
-}
-
-/* 11. CORRECCIÓN ESPECÍFICA para logo con margin-top */
-.logo img {
-  margin-top: 0 !important; /* FORZAR a quitar cualquier margin-top */
-  vertical-align: middle;
-}
-
-/* 12. FIX para position absolute en header */
-header {
-  position: relative;
-}
-
-.empresa {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-
-.logo,
-.menu-toggle {
-  position: relative;
-  z-index: 2;
-}
-
-@media (max-width: 480px) {
-  .footer-photo {
-    max-width: 90%;
+/* Para pantallas grandes */
+@media (min-width: 1200px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
