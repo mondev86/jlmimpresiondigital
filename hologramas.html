@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hologramas y Pantallas Digitales</title>
+</head> 
+
+<style>
+    /* ESTILOS GENERALES */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f9f9f9;
+    }
+
+    header {
+        background: #2c3e50;
+        color: white;
+        padding: 15px 20px;
+    }
+
+    .back-btn {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .back-btn:hover {
+        text-decoration: underline;
+    }
+
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Sección de videos - NUEVO ESTILO MEJORADO */
+    .videos-section {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        margin-bottom: 60px;
+    }
+
+    .videos-section h2 {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 2rem;
+        margin-bottom: 40px;
+        padding-bottom: 15px;
+    }
+
+    /* Grid de videos - MEJORADO */
+    .videos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+
+    /* Estilo para cada video */
+    .video-item {
+        background: #f8f9fa;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .video-container {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        background: #000;
+    }
+
+    .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Cambiado de cover a contain para mantener proporciones */
+        display: block;
+    }
+
+    /* Sección de información del servicio */
+    .galeria-info {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        margin-bottom: 40px;
+    }
+
+    .galeria-info h2 {
+        color: #2c3e50;
+        margin-bottom: 30px;
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .info-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .info-text h3, .info-contact h3 {
+        color: #3498db;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+    }
+
+    .info-text ul {
+        list-style-position: inside;
+        padding-left: 15px;
+    }
+
+    .info-text li {
+        margin-bottom: 10px;
+        padding-left: 10px;
+    }
+
+    .info-contact p {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background: #3498db;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .btn-primary {
+        background: #3498db;
+    }
+
+    .btn-primary:hover {
+        background: #2980b9;
+    }
+
+    /* Footer */
+    footer {
+        background: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .info-content {
+            grid-template-columns: 1fr;
+        }
+        
+        .videos-section {
+            padding: 25px;
+        }
+        
+        .videos-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .videos-section h2 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+<body>
+    <header>
+        <a href="index.html#servicios" class="back-btn">← Volver a Servicios</a>
+    </header>
+    
+    <main>
+        <!-- SECCIÓN DE VIDEOS - CORREGIDA -->
+        <section class="videos-section">
+            <h2>Hologramas y Pantallas Digitales</h2>
+            
+            <!-- TODOS LOS VIDEOS EN UN SOLO CONTENEDOR GRID -->
+            <div class="videos-grid">
+                <!-- Video 1 -->
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls preload="metadata" poster="./img/tren.jpg"
+                               onerror="videoError(this)" onloadstart="videoLoading(this)">
+                            <source src="./videos/ologramtren.mp4" type="video/mp4">
+                            <source src="./videos/ologramtren.webm" type="video/webm">
+                            <source src="./videos/ologramtren.ogv" type="video/ogg">
+                            <div class="video-error" style="display: none;">
+                                <p>❌ No se puede reproducir el video</p>
+                            </div>
+                        </video>
+                        <div class="video-loading" style="display: none;">Cargando video...</div>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls preload="metadata" poster="./img/corazon.jpg"
+                               onerror="videoError(this)" onloadstart="videoLoading(this)">
+                            <source src="./videos/ologramcor.mp4" type="video/mp4">
+                            <source src="./videos/ologramcor.webm" type="video/webm">
+                            <source src="./videos/ologramcor.ogv" type="video/ogg">
+                            <div class="video-error" style="display: none;">
+                                <p>❌ No se puede reproducir el video</p>
+                            </div>
+                        </video>
+                        <div class="video-loading" style="display: none;">Cargando video...</div>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls preload="metadata" poster="./img/turbo.jpg"
+                               onerror="videoError(this)" onloadstart="videoLoading(this)">
+                            <source src="./videos/ologramvarios.mp4" type="video/mp4">
+                            <source src="./videos/ologramvarios.webm" type="video/webm">
+                            <source src="./videos/ologramvarios.ogv" type="video/ogg">
+                            <div class="video-error" style="display: none;">
+                                <p>❌ No se puede reproducir el video</p>
+                            </div>
+                        </video>
+                        <div class="video-loading" style="display: none;">Cargando video...</div>
+                    </div>
+                </div>
+                
+                <!-- Video 4 -->
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls preload="metadata" poster="./img/pantalla-video.png"
+                               onerror="videoError(this)" onloadstart="videoLoading(this)">
+                            <source src="./videos/pantallas.mp4" type="video/mp4">
+                            <source src="./videos/pantallas.mp4.webm" type="video/webm">
+                            <source src="./videos/pantallas.mp4.ogv" type="video/ogg">
+                            <div class="video-error" style="display: none;">
+                                <p>❌ No se puede reproducir el video</p>
+                            </div>
+                        </video>
+                        <div class="video-loading" style="display: none;">Cargando video...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+                
+                <div class="info-contact">
+                    <h3>¿Necesitas personalizado?</h3>
+                    <p>Contáctanos para desarrollar una solucion perfecta para tus productos.</p>
+                    <a href="index.html#contacto" class="btn btn-primary">Solicitar presupuesto</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Impresión Digital JLM — Zaragoza</p>
+        <p>Contacto: produccion@jlmimpresiondigital.com | Tel: 614 - 299 - 302</p>
+        <a href="index.html#servicios" class="back-btn">⬅️</a>
+    </footer>
+
+    <!-- SCRIPT JAVASCRIPT -->
+    <script>
+        // FUNCIONES PARA MANEJAR VIDEOS
+        function videoLoading(videoElement) {
+            const container = videoElement.closest('.video-container');
+            const loading = container.querySelector('.video-loading');
+            const error = container.querySelector('.video-error');
+            
+            if (loading) loading.style.display = 'block';
+            if (error) error.style.display = 'none';
+            
+            console.log('Cargando video:', videoElement.currentSrc || videoElement.src);
+        }
+
+        function videoError(videoElement) {
+            console.error('Error al cargar el video:', videoElement.currentSrc || videoElement.src);
+            
+            const container = videoElement.closest('.video-container');
+            const loading = container.querySelector('.video-loading');
+            const error = container.querySelector('.video-error');
+            
+            if (loading) loading.style.display = 'none';
+            if (error) error.style.display = 'block';
+            
+            setTimeout(() => {
+                const sources = videoElement.querySelectorAll('source');
+                const currentSrc = videoElement.currentSrc || videoElement.src;
+                
+                for (let i = 0; i < sources.length; i++) {
+                    if (sources[i].src === currentSrc && i + 1 < sources.length) {
+                        console.log('Probando formato alternativo:', sources[i + 1].src);
+                        videoElement.src = sources[i + 1].src;
+                        videoElement.load();
+                        break;
+                    }
+                }
+            }, 1000);
+        }
+
+        // INICIALIZACIÓN DE VIDEOS
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado - inicializando videos');
+            
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.autoplay = false;
+                video.controls = true;
+                
+                video.addEventListener('loadeddata', function() {
+                    const loading = this.closest('.video-container')?.querySelector('.video-loading');
+                    if (loading) loading.style.display = 'none';
+                    console.log('✅ Video cargado:', this.currentSrc);
+                });
+                
+                video.addEventListener('error', function() {
+                    videoError(this);
+                });
+                
+                video.addEventListener('loadstart', function() {
+                    videoLoading(this);
+                });
+                
+                video.addEventListener('ended', function() {
+                    console.log('🎬 Video finalizado:', this.currentSrc);
+                });
+            });
+            
+            console.log('✅ Videos inicializados correctamente');
+        });
+    </script>
+</body>
+</html>
+
+
